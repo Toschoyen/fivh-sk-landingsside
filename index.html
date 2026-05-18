@@ -303,22 +303,31 @@
     }
 
     /* === KAMPSAK-SEKSJON (speiler FIVHs eksisterende temaside-komponent) === */
-    /* peach-hint provisorisk, fra skjermbilde, ikke endelig merkevareplattform */
-    .kampsak { background: #f9dcb6; padding: 44px 0; }
+    /* fargehint provisorisk, fra FIVHs temasider, ikke endelig merkevareplattform */
+    /* default = oransje (Temu-temaside). Modifier .kampsak--gronn = grønn (bærekraftig mat-temaside) */
+    .kampsak {
+      --k-bg: #f9dcb6; --k-blokk: #f3c98a; --k-tekst: #8a4b1f; --k-punkt: #6b4a2a;
+      --k-bilde-bg: #ecca9c; --k-bilde-tx: #9a6b3c; --k-strek: #c98f4e;
+      background: var(--k-bg); padding: 44px 0;
+    }
+    .kampsak--gronn {
+      --k-bg: #e6efce; --k-blokk: #d2e3a8; --k-tekst: #41591f; --k-punkt: #46532f;
+      --k-bilde-bg: #c2d693; --k-bilde-tx: #5b6e38; --k-strek: #9bb56a;
+    }
     .kampsak__topp { display: flex; flex-direction: column; gap: 20px; margin-bottom: 24px; }
     .kampsak__tittel { font-size: 2rem; font-weight: 700; line-height: 1.12; }
-    .kampsak__intro { font-size: 1rem; color: #8a4b1f; max-width: 460px; }
-    .kampsak__bilde .image-placeholder { min-height: 210px; border-radius: 12px; background: #ecca9c; color: #9a6b3c; }
-    .kampsak__blokk { background: #f3c98a; border-radius: 14px; padding: 26px 20px; display: flex; flex-direction: column; gap: 26px; }
+    .kampsak__intro { font-size: 1rem; color: var(--k-tekst); max-width: 460px; }
+    .kampsak__bilde .image-placeholder { min-height: 210px; border-radius: 12px; background: var(--k-bilde-bg); color: var(--k-bilde-tx); }
+    .kampsak__blokk { background: var(--k-blokk); border-radius: 14px; padding: 26px 20px; display: flex; flex-direction: column; gap: 26px; }
     .tag-pill { display: inline-block; background: #15110d; color: #fff; font-size: 0.74rem; font-weight: 700; padding: 8px 16px; border-radius: 999px; margin-bottom: 16px; }
     .kampsak__punkt { margin-bottom: 16px; }
     .kampsak__punkt h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 5px; }
-    .kampsak__punkt p { font-size: 0.9rem; color: #6b4a2a; }
-    .kampsak__kilde { display: inline-block; margin-top: 4px; font-style: italic; color: #8a4b1f; text-decoration: underline; font-size: 0.88rem; }
+    .kampsak__punkt p { font-size: 0.9rem; color: var(--k-punkt); }
+    .kampsak__kilde { display: inline-block; margin-top: 4px; font-style: italic; color: var(--k-tekst); text-decoration: underline; font-size: 0.88rem; }
     .kampsak__stats { display: flex; flex-direction: column; gap: 16px; }
-    .stat { border-top: 1px solid #c98f4e; padding-top: 12px; }
+    .stat { border-top: 1px solid var(--k-strek); padding-top: 12px; }
     .stat__tall { font-size: 2.4rem; font-weight: 700; line-height: 1; }
-    .stat__tekst { font-size: 0.85rem; color: #8a4b1f; margin-top: 6px; }
+    .stat__tekst { font-size: 0.85rem; color: var(--k-tekst); margin-top: 6px; }
     @media (min-width: 900px) {
       .kampsak { padding: 60px 0; }
       .kampsak__topp { flex-direction: row; align-items: center; gap: 40px; }
@@ -421,8 +430,8 @@
       <p class="section-subtitle">Dette er sakene vi prioriterer i sommer. Vi oppsummerer dem her, så du slipper å lete.</p>
     </div>
 
-    <!-- 5a · Bærekraftig mat -->
-    <div class="kampsak">
+    <!-- 5a · Bærekraftig mat (grønn, som temasiden) -->
+    <div class="kampsak kampsak--gronn">
       <div class="container">
         <div class="kampsak__topp">
           <div class="kampsak__hode">
