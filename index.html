@@ -262,6 +262,37 @@
         top: auto; width: auto;
       }
     }
+
+    /* === SKRIV UNDER (speiler FIVHs EKSISTERENDE underskrift-komponent) === */
+    .serif { font-family: Georgia, 'Times New Roman', serif; }
+    .skriv-under__tittel { text-align: center; font-size: 1.9rem; font-weight: 700; margin-bottom: 34px; }
+    .kampanje-rad { display: flex; flex-direction: column; gap: 18px; margin-bottom: 40px; }
+    .kampanje-rad:last-child { margin-bottom: 0; }
+    .kampanje-tittel { font-size: 1.35rem; font-weight: 700; line-height: 1.25; margin-bottom: 16px; }
+    .kampanje-tittel .stjerne { color: var(--oransje); margin-right: 8px; }
+    .progress {
+      position: relative; background: #e4e6e8; border-radius: 999px;
+      height: 38px; overflow: hidden; margin-bottom: 16px; max-width: 560px;
+    }
+    .progress__fill { position: absolute; top: 0; bottom: 0; left: 0; background: #d3e84f; border-radius: 999px; }
+    .progress__label {
+      position: relative; display: flex; align-items: center; gap: 8px;
+      height: 100%; padding: 0 18px; font-size: 0.84rem; font-weight: 700; color: #1f2429;
+    }
+    .kampanje-tekst p { font-size: 0.95rem; color: var(--tekst); margin-bottom: 12px; max-width: 560px; }
+    .btn--pill {
+      display: inline-flex; align-items: center; gap: 8px;
+      border: 1.5px solid var(--tekst); color: var(--tekst); background: transparent;
+      border-radius: 999px; padding: 11px 22px; font-size: 0.85rem; font-weight: 600;
+      margin-top: 6px; transition: background 0.2s ease, color 0.2s ease;
+    }
+    @media (prefers-reduced-motion: reduce) { .btn--pill { transition: none; } }
+    .btn--pill:hover { background: var(--tekst); color: #fff; }
+    .kampanje-bilde .image-placeholder { min-height: 230px; border-radius: 10px; }
+    @media (min-width: 900px) {
+      .skriv-under__tittel { font-size: 2.2rem; }
+      .kampanje-rad { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: center; margin-bottom: 56px; }
+    }
   </style>
 </head>
 <body>
@@ -371,21 +402,39 @@
   <!-- 6 · AKTIVE UNDERSKRIFTSKAMPANJER (2 kort, ruter ut) -->
   <section id="kampanjer" style="background:var(--graa-bg);">
     <div class="container">
-      <p class="section-label">SKRIV UNDER</p>
-      <h2 class="section-title">Krev endring nå<span class="anno-wrap"><button class="anno" type="button" aria-expanded="false" aria-label="Vis strategikommentar"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-5 4V6a2 2 0 0 1 2-2z"/></svg></button><span class="anno-pop" role="note"><strong>Strategi, ruting ut, ikke skjema her:</strong> Kortene lenker til FIVHs eksisterende kampanjesider, som allerede konverterer på ~50–70 %. LP-en sin jobb er å varme opp + sende klar trafikk videre, ikke duplisere et svakere skjema. Live signaturtall hentes fra FIVH.</span></span></h2>
-      <p class="section-subtitle">Det tar 20 sekunder. Underskriften din blir et politisk krav.</p>
-      <div class="grid grid--to">
-        <div class="card">
-          <span class="pill">[XX XXX har signert · <span class="tbd">FIVH</span>]</span>
-          <h3 class="card__title">Nok overforbruk – stopp Temu!</h3>
-          <p class="card__desc">Vi krever Temu-avgift og strengere grensekontroll. EU innfører avgift på småpakker allerede i sommer, Norge må følge etter nå.</p>
-          <a href="#kampanje-temu-TBD" class="btn btn--primary btn--sm">SKRIV UNDER →</a> <span class="tbd">[kampanje-URL · FIVH]</span>
+      <h2 class="skriv-under__tittel serif">Skriv under!<span class="anno-wrap"><button class="anno" type="button" aria-expanded="false" aria-label="Vis strategikommentar"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-5 4V6a2 2 0 0 1 2-2z"/></svg></button><span class="anno-pop" role="note"><strong>Strategi og begrensning:</strong> Denne seksjonen speiler FIVHs EKSISTERENDE underskrift-komponent slik Feed allerede har bygget den: sentrert serif-tittel, rad med fremdriftslinje «X av Y underskrifter», kort tekst og pill-knapp som lenker ut til kampanjesiden. Vi bruker kun ferdige elementer, slik at dere slipper ny utvikling hos Feed (tid og kostnad). LP-en ruter ut til de eksisterende kampanjesidene (~50 til 70 % CVR) og hoster ikke skjema selv. Live signaturtall hentes fra FIVHs system.</span></span></h2>
+
+      <div class="kampanje-rad">
+        <div class="kampanje-tekst">
+          <h3 class="kampanje-tittel serif"><span class="stjerne" aria-hidden="true">✱</span>Gjør det lett å spise sunt!</h3>
+          <div class="progress" role="img" aria-label="3 608 av 5 000 underskrifter (eksempel, live-tall fra FIVH)">
+            <div class="progress__fill" style="width:72%;"></div>
+            <div class="progress__label">3 608 av 5 000 underskrifter <span class="tbd">live-tall · FIVH</span></div>
+          </div>
+          <p>Sunn mat blir stadig dyrere, og prisene øker mer enn på usunn mat. Det gjør det vanskeligere for mange å velge de gode alternativene.</p>
+          <p>Nå må politikerne gjøre det enklere å velge sunn og bærekraftig mat!</p>
+          <a href="#kampanje-mat-TBD" class="btn--pill">Les mer og skriv under →</a> <span class="tbd">kampanje-URL · FIVH</span>
         </div>
-        <div class="card">
-          <span class="pill">[XX XXX har signert · <span class="tbd">FIVH</span>]</span>
-          <h3 class="card__title">Doble norsk grøntproduksjon</h3>
-          <p class="card__desc">Selvforsyning under 40 % er ikke naturens skyld, det er politikkens. Vi krever rettferdig fordeling av tilskudd og billigere sunn mat.</p>
-          <a href="#kampanje-mat-TBD" class="btn btn--primary btn--sm">SKRIV UNDER →</a> <span class="tbd">[kampanje-URL · FIVH]</span>
+        <div class="kampanje-bilde">
+          <div class="image-placeholder">BILDE: kampanje grønn mat (eksisterende)</div>
+        </div>
+      </div>
+
+      <div class="kampanje-rad">
+        <div class="kampanje-tekst">
+          <h3 class="kampanje-tittel serif"><span class="stjerne" aria-hidden="true">✱</span>Nok overforbruk – stopp Temu!</h3>
+          <div class="progress" role="img" aria-label="48 129 av 50 000 underskrifter (eksempel, live-tall fra FIVH)">
+            <div class="progress__fill" style="width:96%;"></div>
+            <div class="progress__label">48 129 av 50 000 underskrifter <span class="tbd">live-tall · FIVH</span></div>
+          </div>
+          <p>Temu skaper overforbruk og er en krise for planeten.</p>
+          <p>Med sine helse- og miljøskadelige produkter, flyfrakt, hemmelighold om arbeidsforhold og aggressiv markedsføring er Temu dårlig nytt.</p>
+          <p>Likevel kan de operere helt fritt. I dag har de tollfritak, og i praksis straffefritak for produktene med ulovlige verdier av miljøgifter og kreftfremkallende stoffer.</p>
+          <p>Nå er det på tide med politisk handling!</p>
+          <a href="#kampanje-temu-TBD" class="btn--pill">Les mer og skriv under →</a> <span class="tbd">kampanje-URL · FIVH</span>
+        </div>
+        <div class="kampanje-bilde">
+          <div class="image-placeholder">BILDE: kampanje Temu (eksisterende)</div>
         </div>
       </div>
     </div>
