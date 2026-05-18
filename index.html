@@ -293,6 +293,35 @@
       .skriv-under__tittel { font-size: 2.2rem; }
       .kampanje-rad { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: center; margin-bottom: 56px; }
     }
+
+    /* === KAMPSAK-SEKSJON (speiler FIVHs eksisterende temaside-komponent) === */
+    /* peach-hint provisorisk, fra skjermbilde, ikke endelig merkevareplattform */
+    .kampsak { background: #f9dcb6; padding: 44px 0; }
+    .kampsak__topp { display: flex; flex-direction: column; gap: 20px; margin-bottom: 24px; }
+    .kampsak__tittel { font-size: 2rem; font-weight: 700; line-height: 1.12; }
+    .kampsak__intro { font-size: 1rem; color: #8a4b1f; max-width: 460px; }
+    .kampsak__bilde .image-placeholder { min-height: 210px; border-radius: 12px; background: #ecca9c; color: #9a6b3c; }
+    .kampsak__blokk { background: #f3c98a; border-radius: 14px; padding: 26px 20px; display: flex; flex-direction: column; gap: 26px; }
+    .tag-pill { display: inline-block; background: #15110d; color: #fff; font-size: 0.74rem; font-weight: 700; padding: 8px 16px; border-radius: 999px; margin-bottom: 16px; }
+    .kampsak__punkt { margin-bottom: 16px; }
+    .kampsak__punkt h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 5px; }
+    .kampsak__punkt p { font-size: 0.9rem; color: #6b4a2a; }
+    .kampsak__kilde { display: inline-block; margin-top: 4px; font-style: italic; color: #8a4b1f; text-decoration: underline; font-size: 0.88rem; }
+    .kampsak__stats { display: flex; flex-direction: column; gap: 16px; }
+    .stat { border-top: 1px solid #c98f4e; padding-top: 12px; }
+    .stat__tall { font-size: 2.4rem; font-weight: 700; line-height: 1; }
+    .stat__tekst { font-size: 0.85rem; color: #8a4b1f; margin-top: 6px; }
+    @media (min-width: 900px) {
+      .kampsak { padding: 60px 0; }
+      .kampsak__topp { flex-direction: row; align-items: center; gap: 40px; }
+      .kampsak__hode { flex: 1 1 50%; }
+      .kampsak__bilde { flex: 1 1 46%; }
+      .kampsak__tittel { font-size: 2.6rem; }
+      .kampsak__blokk { flex-direction: row; gap: 52px; padding: 34px 38px; }
+      .kampsak__innhold { flex: 1 1 58%; }
+      .kampsak__stats { flex: 1 1 42%; }
+      .stat__tall { font-size: 3rem; }
+    }
   </style>
 </head>
 <body>
@@ -376,24 +405,86 @@
     </div>
   </section>
 
-  <!-- 5 · KAMPSAKER (2 kort) -->
-  <section id="kampsaker">
-    <div class="container">
+  <!-- 5 · KAMPSAKER (egen fyldig seksjon per kampsak, speiler FIVHs temaside-komponent) -->
+  <section id="kampsaker" style="padding:0;">
+    <div class="container" style="padding-top:56px;padding-bottom:28px;">
       <p class="section-label">KAMPSAKER</p>
-      <h2 class="section-title">To kamper du bør kjenne<span class="anno-wrap"><button class="anno" type="button" aria-expanded="false" aria-label="Vis strategikommentar"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-5 4V6a2 2 0 0 1 2-2z"/></svg></button><span class="anno-pop" role="note"><strong>Strategi, 6 → 2 kampsaker:</strong> Redusert fra wireframens 6 kort til de to bekreftede sommerkampsakene (Temu + grønn matomstilling) per Tobias. Færre, skarpere valg = mindre beslutningstretthet for kald trafikk. Momskutt er i vervesamtalen, men ikke en LP-kampsak.</span></span></h2>
-      <p class="section-subtitle">Dette er sakene vi prioriterer i sommer. Kjenn deg igjen, og bli med.</p>
-      <div class="grid grid--to">
-        <div class="card">
-          <div class="card__icon"></div>
-          <h3 class="card__title">Stopp Temu-flommen</h3>
-          <p class="card__desc">37 000 Temu-pakker lander i Norge, hver dag. Da Miljødirektoratet testet produktene, inneholdt over halvparten helse- og miljøfarlige stoffer.</p>
-          <a href="#temaside-temu-TBD" class="textlink">Utforsk temaet →</a> <span class="tbd">[temaside-URL · FIVH]</span>
+      <h2 class="section-title">To kamper du bør kjenne<span class="anno-wrap"><button class="anno" type="button" aria-expanded="false" aria-label="Vis strategikommentar"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-5 4V6a2 2 0 0 1 2-2z"/></svg></button><span class="anno-pop" role="note"><strong>Strategi og begrensning:</strong> Hver kampsak får sin EGEN fyldige seksjon på siden i stedet for et lite kort som sender folk vekk. Det reduserer videresendinger, så besøkeren ikke «roter seg vekk», og oppsummerer saken godt på selve siden. Layouten speiler FIVHs EKSISTERENDE temaside-komponent (serif-tittel + intro + bilde, så «Hvorfor jobber vi med ...»-blokk med 3 punkter og 3 nøkkeltall), så Feed slipper ny utvikling. Innholdet er vinklet slik vervesamtalene legger det opp: Problem, så at systemet er problemet, så FIVHs konkrete krav. Eneste utgående lenke er en lavmælt «Se kilder og les mer».</span></span></h2>
+      <p class="section-subtitle">Dette er sakene vi prioriterer i sommer. Vi oppsummerer dem her, så du slipper å lete.</p>
+    </div>
+
+    <!-- 5a · Bærekraftig mat -->
+    <div class="kampsak">
+      <div class="container">
+        <div class="kampsak__topp">
+          <div class="kampsak__hode">
+            <h3 class="kampsak__tittel serif">Bærekraftig mat</h3>
+            <p class="kampsak__intro">Framtiden i våre hender jobber for at vi skal spise og produsere mer plantebasert og bærekraftig mat, for å kutte utslipp, bevare natur og redusere matsvinnet.</p>
+          </div>
+          <div class="kampsak__bilde">
+            <div class="image-placeholder">BILDE: bærekraftig mat (eksisterende)</div>
+          </div>
         </div>
-        <div class="card">
-          <div class="card__icon"></div>
-          <h3 class="card__title">Mer norsk plantemat</h3>
-          <p class="card__desc">Bare 2 % av bøndene dyrker grønnsaker, til hele Norge. Hver dag legges en gård ned, mens selvforsyningen er under 40 %.</p>
-          <a href="#temaside-mat-TBD" class="textlink">Utforsk temaet →</a> <span class="tbd">[temaside-URL · FIVH]</span>
+        <div class="kampsak__blokk">
+          <div class="kampsak__innhold">
+            <span class="tag-pill">Hvorfor jobber vi med bærekraftig mat?</span>
+            <div class="kampsak__punkt">
+              <h4>Store klima- og miljøproblemer</h4>
+              <p>Hvert år kaster vi enorme mengder mat, og vi spiser langt mer kjøtt enn kostrådene og klimaforskningen anbefaler. Matproduksjon er en av de største kildene til klimagassutslipp og naturtap, og samtidig en næring som vil bli sterkt påvirket av klimaendringene.</p>
+            </div>
+            <div class="kampsak__punkt">
+              <h4>Usolidarisk matsystem</h4>
+              <p>Bønder og fiskere sitter igjen med en stadig mindre del av verdiene i matproduksjonen, mens eierne av dagligvarekjedene blir milliardærer. I tillegg beslaglegger vi store arealer i utlandet ved å importere over halvparten av maten vi spiser.</p>
+            </div>
+            <div class="kampsak__punkt">
+              <h4>Mer plantemat (dette krever vi)</h4>
+              <p>Vi krever at det blir mer lønnsomt for bønder å produsere grønnsaker, frukt og korn, en mer rettferdig fordeling av landbrukstilskudd, og at sunn mat blir billigere og lettere tilgjengelig. Norge kan femdoble grøntproduksjonen, det er politikken og ikke naturen som står i veien.</p>
+            </div>
+            <a href="#kilder-mat-TBD" class="kampsak__kilde">→ Se kilder og les mer.</a> <span class="tbd">URL · FIVH</span>
+          </div>
+          <div class="kampsak__stats">
+            <div class="stat"><div class="stat__tall serif">90 %</div><div class="stat__tekst">av klimagassutslippene fra norsk matproduksjon kommer fra kjøttproduksjon.</div></div>
+            <div class="stat"><div class="stat__tall serif">40 %</div><div class="stat__tekst">oppgir at de ønsker å spise mindre kjøtt.</div></div>
+            <div class="stat"><div class="stat__tall serif">450 000</div><div class="stat__tekst">tonn spiselig mat blir kastet i Norge hvert år.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5b · Nok overforbruk: stopp Temu -->
+    <div class="kampsak">
+      <div class="container">
+        <div class="kampsak__topp">
+          <div class="kampsak__hode">
+            <h3 class="kampsak__tittel serif">Nok overforbruk: stopp Temu</h3>
+            <p class="kampsak__intro">Turboselskaper som Temu pøser på med billige varer som skader både mennesker og miljø, og driver en bruk-og-kast-kultur ute av kontroll. Framtiden i våre hender kjemper mot overforbruk og global ulikhet.</p>
+          </div>
+          <div class="kampsak__bilde">
+            <div class="image-placeholder">BILDE: Temu-kampanje (eksisterende)</div>
+          </div>
+        </div>
+        <div class="kampsak__blokk">
+          <div class="kampsak__innhold">
+            <span class="tag-pill">Hvorfor jobber vi mot Temu?</span>
+            <div class="kampsak__punkt">
+              <h4>Et bruk-og-kast-system ute av kontroll</h4>
+              <p>Hver eneste dag lander det rundt 37 000 pakker fra Temu i Norge. Vi nordmenn handler mer enn svenskene og ligger på Temu-toppen i Norden. Varene varer ofte kort tid før de havner i søpla.</p>
+            </div>
+            <div class="kampsak__punkt">
+              <h4>Farlige varer, fritt fram</h4>
+              <p>Da Miljødirektoratet testet produkter fra Temu, inneholdt over halvparten helse- og miljøfarlige stoffer, fra sandaler og smykker til barneleker med stoffer som kan være kreftfremkallende. Likevel slipper varene nesten fritt inn, på grunn av tollfritak og svak grensekontroll.</p>
+            </div>
+            <div class="kampsak__punkt">
+              <h4>Dette krever vi</h4>
+              <p>Regjeringen må innføre en Temu-avgift, slik at det ikke lenger er gratis å sende inn tonnevis av billige småpakker, og Norge må stoppe farlige varer på grensen med mye strengere kontroll. EU innfører avgift på småpakker allerede i sommer.</p>
+            </div>
+            <a href="#kilder-temu-TBD" class="kampsak__kilde">→ Se kilder og les mer.</a> <span class="tbd">URL · FIVH</span>
+          </div>
+          <div class="kampsak__stats">
+            <div class="stat"><div class="stat__tall serif">37 000</div><div class="stat__tekst">Temu-pakker lander i Norge hver eneste dag.</div></div>
+            <div class="stat"><div class="stat__tall serif">Over 50 %</div><div class="stat__tekst">av testede Temu-produkter inneholdt helse- eller miljøfarlige stoffer (Miljødirektoratet).</div></div>
+            <div class="stat"><div class="stat__tall serif">7 mill.</div><div class="stat__tekst">potensielt farlige pakker i året med dagens utvikling.</div></div>
+          </div>
         </div>
       </div>
     </div>
