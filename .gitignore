@@ -1,0 +1,4 @@
+# Ingen byggesteg — kun statisk index.html publiseres.
+.DS_Store
+Thumbs.db
+*.log

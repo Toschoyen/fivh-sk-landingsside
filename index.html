@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<!--
+  ============================================================================
+  FIVH SOMMERKAMPANJE – LANDINGSSIDE  ·  WIREFRAME v2 (INNHOLDSUTKAST)
+  Fase 04 (skriv innhold). Dato: 2026-05-18. Klient: FIVH.
+  Kilde: Monday Epic 12036431019 / Sprint 12036460826.
+
+  FORMÅL: Informere/varme opp KALD trafikk (egen Meta/Kobler-kampanje, separat
+  Epic) som aldri har hørt om FIVH, FØR en fysisk vervesamtale (dør/gate/tlf).
+  Informasjons-/warm-up-side – IKKE squeeze. Ruter signering UT til FIVHs
+  beviste kampanjesider og medlemssiden.
+
+  ENDRINGER FRA v1:
+   - Placeholder-tekst erstattet med faktisk norsk innhold (kilde: kampsak-DOCX
+     i 01-brief/Kampsaker/, faktasjekket).
+   - Kampsaker redusert 6 → 2 (Temu + grønn matomstilling) — Tobias' føring.
+   - Medlemsseksjon MODULÆR: Variant A (subtil) + Variant B (primær) vises
+     side om side; klienten velger i gjennomgangen.
+   - Nyhetsbrev beholdt, men flagget for FIVH-bekreftelse.
+   - Strategi-bobler (oransje prikker): mine begrunnelser. Global vis/skjul.
+   - Plattform = Craft CMS (Twig), ikke Divi 5.
+
+  PLACEHOLDERE: tydelig merket [PLACEHOLDER … · eier] / [KLIENTBESLUTNING] /
+  [BEKREFT]. Eksakte årstall på åpenhetsloven/matsvinnloven, alle URLer,
+  live signaturtall, medlems-URL, merkevareplattform = TBD fra FIVH.
+  Dette er et INNHOLDSUTKAST til gjennomgang – ikke endelig design.
+  ============================================================================
+-->
+<html lang="nb">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FIVH – Landingsside (innholdsutkast v2 til gjennomgang)</title>
+  <style>
+    /* === FIVH-FARGEHINT (PROVISORISK – fra skjermbilder, ikke endelig merkevareplattform) === */
+    :root {
+      --blaa:        #0b5fa5;
+      --blaa-mork:   #0a2a4d;
+      --oransje:     #e8632a;
+      --gul-tint:    #fdf3d1;
+      --oransje-tint:#fbe3d6;
+      --blaa-tint:   #e2eef8;
+      --graa-bg:     #f4f5f6;
+      --graa-linje:  #e2e4e7;
+      --tekst:       #1f2429;
+      --tekst-svak:  #5d636a;
+      --ph:          #d6d9dd;
+    }
+
+    /* === RESET & BASE (mobil-først) === */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+      color: var(--tekst); line-height: 1.6; background: #fff;
+    }
+    a { text-decoration: none; color: inherit; cursor: pointer; }
+    img { max-width: 100%; display: block; }
+    :focus-visible { outline: 3px solid var(--oransje); outline-offset: 2px; }
+
+    /* === LAYOUT === */
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+    section { padding: 56px 0; }
+
+    /* === HJELPERE === */
+    .section-label {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--blaa); margin-bottom: 10px;
+    }
+    .section-title { font-size: 1.6rem; font-weight: 700; margin-bottom: 10px; line-height: 1.25; }
+    .section-subtitle { color: var(--tekst-svak); max-width: 640px; font-size: 0.98rem; margin-bottom: 28px; }
+    .body-text { max-width: 640px; font-size: 0.98rem; margin-bottom: 8px; }
+
+    .tbd {
+      font-size: 0.82em; color: #8a6900; background: var(--gul-tint);
+      border: 1px dashed #d8b400; padding: 0 6px; border-radius: 3px;
+    }
+
+    .image-placeholder {
+      background: var(--ph); color: #7c8087;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.78rem; letter-spacing: 0.04em; text-align: center;
+      width: 100%; min-height: 200px; border-radius: 6px; padding: 12px;
+    }
+    .logo-placeholder {
+      width: 96px; height: 36px; background: #c7ccd1; border-radius: 4px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.62rem; color: #5b6168; font-weight: 700; letter-spacing: 0.1em;
+    }
+    .logo-placeholder--light { background: #2c4a63; color: #c9d6e2; }
+
+    /* === KNAPPER === */
+    .btn {
+      display: inline-block; padding: 12px 26px; font-size: 0.78rem;
+      font-weight: 700; letter-spacing: 0.06em; border: 2px solid transparent;
+      cursor: pointer; transition: opacity 0.2s ease; text-align: center; border-radius: 4px;
+    }
+    @media (prefers-reduced-motion: reduce) { .btn { transition: none; } }
+    .btn:hover { opacity: 0.85; }
+    .btn--primary { background: var(--oransje); color: #fff; }
+    .btn--blue { background: var(--blaa); color: #fff; }
+    .btn--outline { background: transparent; color: var(--blaa); border-color: var(--blaa); }
+    .btn--sm { padding: 8px 16px; font-size: 0.7rem; }
+    .textlink { color: var(--blaa); font-weight: 600; font-size: 0.85rem; }
+    .textlink:hover { text-decoration: underline; }
+
+    /* === CALLOUT === */
+    .callout {
+      border-left: 5px solid var(--blaa); background: var(--blaa-tint);
+      padding: 18px 20px; border-radius: 4px; margin-top: 18px; max-width: 640px;
+    }
+    .callout__tag {
+      font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--blaa); display: block; margin-bottom: 8px;
+    }
+    .callout ul { margin: 0; padding-left: 18px; }
+    .callout li { font-size: 0.92rem; color: var(--tekst); margin-bottom: 6px; }
+
+    /* === HEADER === */
+    .header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(255,255,255,0.96); backdrop-filter: blur(6px);
+      border-bottom: 1px solid var(--graa-linje);
+    }
+    .header__inner { display: flex; align-items: center; justify-content: space-between; height: 60px; }
+    .header__nav { display: none; gap: 22px; }
+    .header__nav a { font-size: 0.74rem; font-weight: 600; letter-spacing: 0.06em; color: var(--tekst); }
+    .header__nav a:hover { color: var(--blaa); }
+
+    /* === HERO === */
+    .hero { background: var(--graa-bg); padding-top: 96px; padding-bottom: 48px; }
+    .hero__grid { display: flex; flex-direction: column; gap: 28px; }
+    .hero__eyebrow { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--blaa); margin-bottom: 12px; }
+    .hero__title { font-size: 2rem; font-weight: 800; line-height: 1.15; margin-bottom: 14px; }
+    .hero__subtitle { color: var(--tekst); font-size: 1.02rem; margin-bottom: 24px; max-width: 540px; }
+    .hero__actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .hero__media .image-placeholder { min-height: 240px; }
+
+    /* === TIDSLINJE === */
+    .timeline { display: flex; flex-direction: column; gap: 14px; max-width: 760px; }
+    .timeline__item {
+      display: flex; gap: 16px; align-items: flex-start;
+      border: 1px solid var(--graa-linje); border-left: 4px solid var(--blaa);
+      border-radius: 4px; padding: 16px 18px;
+    }
+    .timeline__date {
+      flex-shrink: 0; font-size: 0.72rem; font-weight: 700; color: #fff;
+      background: var(--blaa); padding: 4px 10px; border-radius: 3px; letter-spacing: 0.04em;
+      min-width: 64px; text-align: center;
+    }
+    .timeline__body strong { display: block; font-size: 0.96rem; margin-bottom: 4px; }
+    .timeline__body p { font-size: 0.88rem; color: var(--tekst-svak); }
+    .timeline__more { margin-top: 18px; }
+
+    /* === KORT-GRID === */
+    .grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+    .card {
+      border: 1px solid var(--graa-linje); border-radius: 6px;
+      padding: 22px 20px; background: #fff; display: flex; flex-direction: column;
+    }
+    .card__icon { width: 44px; height: 44px; background: var(--ph); border-radius: 50%; margin-bottom: 14px; }
+    .card__title { font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; }
+    .card__desc { font-size: 0.9rem; color: var(--tekst-svak); margin-bottom: 16px; flex-grow: 1; }
+    .pill {
+      align-self: flex-start; font-size: 0.7rem; font-weight: 700;
+      background: var(--gul-tint); color: #8a6900; border: 1px solid #e6c860;
+      padding: 4px 10px; border-radius: 999px; margin-bottom: 14px;
+    }
+
+    /* === MEDLEM (modulær: to varianter) === */
+    .medlem { background: var(--blaa-tint); }
+    .medlem__intro { max-width: 680px; margin-bottom: 24px; }
+    .medlem__variants { display: grid; grid-template-columns: 1fr; gap: 18px; }
+    .variant {
+      background: #fff; border: 1px solid var(--graa-linje);
+      border-radius: 6px; padding: 22px 20px;
+    }
+    .variant__tag {
+      display: inline-block; font-size: 0.62rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      background: var(--graa-bg); color: var(--tekst-svak);
+      padding: 3px 9px; border-radius: 3px; margin-bottom: 12px;
+    }
+    .variant--b .variant__tag { background: var(--oransje); color: #fff; }
+    .variant__title { font-size: 1.25rem; font-weight: 700; margin-bottom: 10px; }
+    .variant p { color: var(--tekst-svak); font-size: 0.92rem; margin-bottom: 14px; }
+    .variant ul { margin: 0 0 16px; padding-left: 18px; }
+    .variant li { font-size: 0.9rem; color: var(--tekst); margin-bottom: 5px; }
+
+    /* === NYHETSBREV === */
+    .nyhetsbrev { background: var(--graa-bg); }
+    .nyhetsbrev__form { display: flex; flex-direction: column; gap: 12px; max-width: 440px; margin-top: 16px; }
+    .nyhetsbrev__form input {
+      padding: 12px 14px; font-size: 0.9rem; border: 1px solid #c7ccd1;
+      border-radius: 4px; font-family: inherit; width: 100%;
+    }
+    .nyhetsbrev__form input:focus { outline: none; border-color: var(--blaa); }
+    .consent { font-size: 0.74rem; color: var(--tekst-svak); display: flex; gap: 8px; align-items: flex-start; max-width: 440px; margin-top: 12px; }
+
+    /* === FOOTER === */
+    .footer { background: var(--blaa-mork); color: #c9d6e2; padding: 52px 0 0; }
+    .footer__inner { display: grid; grid-template-columns: 1fr; gap: 30px; padding-bottom: 36px; }
+    .footer__tagline { font-size: 0.84rem; color: #9fb4c8; margin: 12px 0 0; max-width: 300px; }
+    .footer__col h4 { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; color: #8aa3bc; margin-bottom: 14px; }
+    .footer__col a, .footer__col p { display: block; font-size: 0.82rem; color: #b9c8d8; margin-bottom: 9px; }
+    .footer__col a:hover { color: #fff; }
+    .footer__bottom { border-top: 1px solid #1d3a59; padding: 18px 0; }
+    .footer__bottom .container { display: flex; flex-direction: column; gap: 10px; }
+    .footer__bottom p { font-size: 0.74rem; color: #7f97ad; }
+    .footer__bottom-links { display: flex; gap: 20px; flex-wrap: wrap; }
+    .footer__bottom-links a { font-size: 0.72rem; color: #7f97ad; }
+    .footer__bottom-links a:hover { color: #c9d6e2; }
+
+    /* === STRATEGI-BOBLER === */
+    .anno-wrap { position: relative; display: inline-block; vertical-align: middle; margin-left: 6px; }
+    .anno {
+      width: 20px; height: 20px; border-radius: 50%; border: none;
+      background: var(--oransje); color: #fff; cursor: pointer;
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 0; line-height: 0;
+    }
+    .anno svg { width: 12px; height: 12px; }
+    .anno-pop {
+      display: none; position: absolute; z-index: 200; top: calc(100% + 8px); left: 0;
+      width: min(340px, 82vw); background: #1f2429; color: #fff;
+      padding: 13px 15px; border-radius: 6px; font-size: 0.8rem; line-height: 1.55;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.28); font-weight: 400; letter-spacing: normal;
+      text-transform: none;
+    }
+    .anno-pop strong { color: #ffb38a; }
+    .anno-pop.open { display: block; }
+    body.anno-hidden .anno-wrap { display: none; }
+    .anno-ctrl {
+      position: fixed; right: 14px; bottom: 14px; z-index: 300;
+      background: var(--tekst); color: #fff; border: none; cursor: pointer;
+      font-size: 0.74rem; font-weight: 700; letter-spacing: 0.04em;
+      padding: 10px 14px; border-radius: 999px; box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+    }
+    .anno-ctrl::before { content: "● "; color: var(--oransje); }
+
+    /* === DESKTOP-BRUDD (mobil-først → ett brudd) === */
+    @media (min-width: 900px) {
+      section { padding: 72px 0; }
+      .header__nav { display: flex; }
+      .hero { padding-top: 116px; padding-bottom: 64px; }
+      .hero__grid { flex-direction: row; align-items: center; }
+      .hero__copy { flex: 1 1 55%; }
+      .hero__media { flex: 1 1 45%; }
+      .hero__title { font-size: 2.6rem; }
+      .grid--to { grid-template-columns: repeat(2, 1fr); }
+      .medlem__variants { grid-template-columns: 1fr 1fr; }
+      .footer__inner { grid-template-columns: 1.6fr 1fr 1fr 1fr; }
+      .footer__bottom .container { flex-direction: row; justify-content: space-between; align-items: center; }
+      .nyhetsbrev__form { flex-direction: row; align-items: flex-start; }
+      .nyhetsbrev__form input { flex: 1; }
+    }
+    /* Mobil: popover som bunn-ark for å unngå overflow */
+    @media (max-width: 600px) {
+      .anno-pop.open {
+        position: fixed; left: 12px; right: 12px; bottom: 64px;
+        top: auto; width: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 1 · HEADER -->
+  <header class="header">
+    <div class="container header__inner">
+      <a href="#topp" aria-label="FIVH forside"><div class="logo-placeholder">LOGO</div></a>
+      <nav class="header__nav" aria-label="Hovedmeny">
+        <a href="#hvem">HVEM ER FIVH</a>
+        <a href="#resultater">RESULTATER</a>
+        <a href="#kampsaker">KAMPSAKER</a>
+        <a href="#kampanjer">SKRIV UNDER</a>
+        <a href="#medlem">BLI MEDLEM</a>
+      </nav>
+      <a href="#medlem" class="btn btn--outline btn--sm">BLI MEDLEM</a>
+    </div>
+  </header>
+
+  <!-- 2 · HERO «Hvem er FIVH» -->
+  <section id="topp" class="hero">
+    <div class="container hero__grid">
+      <div class="hero__copy">
+        <p class="hero__eyebrow">FRAMTIDEN I VÅRE HENDER</p>
+        <h1 class="hero__title">Norges største stemme for miljø og solidaritet<span class="anno-wrap"><button class="anno" type="button" aria-expanded="false" aria-label="Vis strategikommentar"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-5 4V6a2 2 0 0 1 2-2z"/></svg></button><span class="anno-pop" role="note"><strong>Strategi — hero uten skjema:</strong> Bevisst ingen aggressiv skjemafangst her. Trafikken er kald (kjenner ikke merkevaren) og skal varmes opp og informeres før den fysiske vervesamtalen. Myk inngang («bli kjent») konverterer bedre nedstrøms enn en squeeze.</span></span></h1>
+        <p class="hero__subtitle">Vi er Norges største miljø- og solidaritetsorganisasjon. Nesten 50 000 mennesker står sammen for at vi skal forbruke mindre og dele mer rettferdig — gjennom opplysning, folkekrav og politisk press.</p>
+        <div class="hero__actions">
+          <a href="#hvem" class="btn btn--primary">BLI KJENT MED OSS</a>
+          <a href="#kampsaker" class="btn btn--outline">SE KAMPSAKENE</a>
+        </div>
+      </div>
+      <div class="hero__media">
+        <div class="image-placeholder">BILDE: bevegelse / mennesker (velges i fase 03)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 · DETTE ER FIVH -->
+  <section id="hvem">
+    <div class="container">
+      <p class="section-label">DETTE ER FIVH</p>
+      <h2 class="section-title">Overforbruket er problemet. Vi er svaret.<span class="anno-wrap"><button class="anno" type="button" aria-expanded="false" aria-label="Vis strategikommentar"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-5 4V6a2 2 0 0 1 2-2z"/></svg></button><span class="anno-pop" role="note"><strong>Strategi — «systemet, ikke deg»:</strong> Speiler vervesamtalens kjernegrep: flytt skylden fra individet til systemet/politikken. Da slipper besøkeren skam og blir mottakelig for «bli med og press politikerne». Samme retorikk som verver bruker muntlig.</span></span></h2>
+      <p class="body-text">Vi lever som om vi har flere jordkloder. Overforbruket driver klima- og naturkrisen — men dette er ikke din private skyld. Det er politikk.</p>
+      <p class="body-text">Framtiden i våre hender flytter ansvaret dit det hører hjemme: til systemet og politikerne. Vi opplyser, vi samler folkekrav, og vi presser fram endringer som varer.</p>
+      <div class="callout">
+        <span class="callout__tag">Dette jobber vi for</span>
+        <ul>
+          <li>Mindre overforbruk — en mer rettferdig deling av jordas ressurser</li>
+          <li>Vi gjør problemet til politikk, ikke privat skyld</li>
+          <li>Hver underskrift og hvert medlem gir oss tyngde til å vinne fram</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 · DETTE HAR VI OPPNÅDD -->
+  <section id="resultater" style="background:var(--graa-bg);">
+    <div class="container">
+      <p class="section-label">DETTE HAR VI OPPNÅDD</p>
+      <h2 class="section-title">Vi vinner faktisk fram<span class="anno-wrap"><button class="anno" type="button" aria-expanded="false" aria-label="Vis strategikommentar"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-5 4V6a2 2 0 0 1 2-2z"/></svg></button><span class="anno-pop" role="note"><strong>Strategi — bevis = tillit:</strong> Kald trafikk trenger «proof» før de stoler på oss. Datostemplede seire er FIVHs eget mønster og vervesamtalens «seier»-takt. <strong>Eksakte årstall på åpenhetsloven/matsvinnloven er IKKE bekreftet</strong> i kildedokumentene (de bruker «i fjor»/«på 5 år») — derfor merket som placeholder. Brukthandelloven 2024 er eksplisitt bekreftet.</span></span></h2>
+      <p class="section-subtitle">Nesten 50 000 medlemmer i ryggen gir resultater. På få år har folkekrav blitt til lov.</p>
+      <div class="timeline">
+        <div class="timeline__item">
+          <span class="timeline__date">2024</span>
+          <div class="timeline__body"><strong>Brukthandelloven endret</strong><p>Vi fikk Stortinget til å forenkle reglene for bruktbutikker — et viktig skritt for mer ombruk.</p></div>
+        </div>
+        <div class="timeline__item">
+          <span class="timeline__date"><span class="tbd">[ÅR · FIVH]</span></span>
+          <div class="timeline__body"><strong>Matsvinnloven vedtatt</strong><p>Etter mange års kamp ble matsvinn lovregulert — slutt på at fullt brukbar mat kastes i matbransjen.</p></div>
+        </div>
+        <div class="timeline__item">
+          <span class="timeline__date"><span class="tbd">[ÅR · FIVH]</span></span>
+          <div class="timeline__body"><strong>Åpenhetsloven</strong><p>Selskaper må være åpne om forholdene i leverandørkjeden. Et folkekrav som ble lov.</p></div>
+        </div>
+        <div class="timeline__item">
+          <span class="timeline__date">5 år</span>
+          <div class="timeline__body"><strong>To lover på fem år</strong><p>Åpenhetsloven og matsvinnloven kom på bare fem år — fordi vi ble mange nok til å bli hørt.</p></div>
+        </div>
+      </div>
+      <div class="timeline__more"><a href="#flere-seire-TBD" class="textlink">Vis flere seire →</a> <span class="tbd">[URL · FIVH]</span></div>
+    </div>
+  </section>
+
+  <!-- 5 · KAMPSAKER (2 kort) -->
+  <section id="kampsaker">
+    <div class="container">
+      <p class="section-label">KAMPSAKER</p>
+      <h2 class="section-title">To kamper du bør kjenne<span class="anno-wrap"><button class="anno" type="button" aria-expanded="false" aria-label="Vis strategikommentar"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-5 4V6a2 2 0 0 1 2-2z"/></svg></button><span class="anno-pop" role="note"><strong>Strategi — 6 → 2 kampsaker:</strong> Redusert fra wireframens 6 kort til de to bekreftede sommerkampsakene (Temu + grønn matomstilling) per Tobias. Færre, skarpere valg = mindre beslutningstretthet for kald trafikk. Momskutt er i vervesamtalen, men ikke en LP-kampsak.</span></span></h2>
+      <p class="section-subtitle">Dette er sakene vi prioriterer i sommer. Kjenn deg igjen — og bli med.</p>
+      <div class="grid grid--to">
+        <div class="card">
+          <div class="card__icon"></div>
+          <h3 class="card__title">Stopp Temu-flommen</h3>
+          <p class="card__desc">37 000 Temu-pakker lander i Norge — hver dag. Da Miljødirektoratet testet produktene, inneholdt over halvparten helse- og miljøfarlige stoffer.</p>
+          <a href="#temaside-temu-TBD" class="textlink">Utforsk temaet →</a> <span class="tbd">[temaside-URL · FIVH]</span>
+        </div>
+        <div class="card">
+          <div class="card__icon"></div>
+          <h3 class="card__title">Mer norsk plantemat</h3>
+          <p class="card__desc">Bare 2 % av bøndene dyrker grønnsaker — til hele Norge. Hver dag legges en gård ned, mens selvforsyningen er under 40 %.</p>
+          <a href="#temaside-mat-TBD" class="textlink">Utforsk temaet →</a> <span class="tbd">[temaside-URL · FIVH]</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 · AKTIVE UNDERSKRIFTSKAMPANJER (2 kort, ruter ut) -->
+  <section id="kampanjer" style="background:var(--graa-bg);">
+    <div class="container">
+      <p class="section-label">SKRIV UNDER</p>
+      <h2 class="section-title">Krev endring nå<span class="anno-wrap"><button class="anno" type="button" aria-expanded="false" aria-label="Vis strategikommentar"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-5 4V6a2 2 0 0 1 2-2z"/></svg></button><span class="anno-pop" role="note"><strong>Strategi — ruting ut, ikke skjema her:</strong> Kortene lenker til FIVHs eksisterende kampanjesider, som allerede konverterer på ~50–70 %. LP-en sin jobb er å varme opp + sende klar trafikk videre, ikke duplisere et svakere skjema. Live signaturtall hentes fra FIVH.</span></span></h2>
+      <p class="section-subtitle">Det tar 20 sekunder. Underskriften din blir et politisk krav.</p>
+      <div class="grid grid--to">
+        <div class="card">
+          <span class="pill">[XX XXX har signert · <span class="tbd">FIVH</span>]</span>
+          <h3 class="card__title">Nok overforbruk – stopp Temu!</h3>
+          <p class="card__desc">Vi krever Temu-avgift og strengere grensekontroll. EU innfører avgift på småpakker allerede i sommer — Norge må følge etter nå.</p>
+          <a href="#kampanje-temu-TBD" class="btn btn--primary btn--sm">SKRIV UNDER →</a> <span class="tbd">[kampanje-URL · FIVH]</span>
+        </div>
+        <div class="card">
+          <span class="pill">[XX XXX har signert · <span class="tbd">FIVH</span>]</span>
+          <h3 class="card__title">Doble norsk grøntproduksjon</h3>
+          <p class="card__desc">Selvforsyning under 40 % er ikke naturens skyld — det er politikkens. Vi krever rettferdig fordeling av tilskudd og billigere sunn mat.</p>
+          <a href="#kampanje-mat-TBD" class="btn btn--primary btn--sm">SKRIV UNDER →</a> <span class="tbd">[kampanje-URL · FIVH]</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 · BLI MEDLEM (modulær: Variant A + B) -->
+  <section id="medlem" class="medlem">
+    <div class="container">
+      <p class="section-label">STØTT ARBEIDET</p>
+      <div class="medlem__intro">
+        <h2 class="section-title" style="margin-bottom:8px;">Bli medlem
+          <span class="anno-wrap"><button class="anno" type="button" aria-expanded="false" aria-label="Vis strategikommentar"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-5 4V6a2 2 0 0 1 2-2z"/></svg></button><span class="anno-pop" role="note"><strong>KLIENTBESLUTNING — A eller B:</strong> Prosjektgrunnlaget rammer medlemskap som kampanjens primære mål; det tidligere wireframet hadde medlemskap subtilt (warm-up-logikk: verver lukker fysisk). Begge variantene vises her med IDENTISK kjernetekst + knapp — velg innramming i gjennomgangen, så låser vi den ene. Ingen omskriving nødvendig ved bytte.</span></span>
+        </h2>
+        <p style="color:var(--tekst-svak);font-size:0.95rem;">Velg innramming i gjennomgangen. De to variantene deler samme kjernetekst og knapp.</p>
+      </div>
+      <div class="medlem__variants">
+        <div class="variant variant--a">
+          <span class="variant__tag">Variant A · subtil</span>
+          <h3 class="variant__title">Vil du støtte arbeidet fast?</h3>
+          <p>Underskrifter setter saker på dagsorden. Medlemmer gir oss tyngden til å vinne dem. Nesten 50 000 medlemmer ga oss åpenhetsloven og matsvinnloven — bli den neste.</p>
+          <a href="#medlem-url-TBD" class="btn btn--blue">BLI MEDLEM</a> <span class="tbd">[medlems-URL · FIVH]</span>
+        </div>
+        <div class="variant variant--b">
+          <span class="variant__tag">Variant B · primær</span>
+          <h3 class="variant__title">Bli medlem – gi kampen tyngde</h3>
+          <p>Underskrifter setter saker på dagsorden. Medlemmer gir oss tyngden til å vinne dem. Nesten 50 000 medlemmer ga oss åpenhetsloven og matsvinnloven — bli den neste.</p>
+          <ul>
+            <li>Du gjør folkekravene umulige å ignorere</li>
+            <li>Du finansierer kampanjene som vinner fram</li>
+            <li>Du blir én av nesten 50 000 — på vei mot enda flere</li>
+          </ul>
+          <a href="#medlem-url-TBD" class="btn btn--primary">BLI MEDLEM</a> <span class="tbd">[medlems-URL · FIVH]</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8 · NYHETSBREV (behold, flagget for bekreftelse) -->
+  <section id="nyhetsbrev" class="nyhetsbrev">
+    <div class="container">
+      <p class="section-label">HOLD DEG OPPDATERT</p>
+      <h2 class="section-title">Følg kampen – få seirene først<span class="anno-wrap"><button class="anno" type="button" aria-expanded="false" aria-label="Vis strategikommentar"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-5 4V6a2 2 0 0 1 2-2z"/></svg></button><span class="anno-pop" role="note"><strong>BEKREFT — skal seksjonen være med?</strong> Nyhetsbrev er en industristandard lavterskel-fangst for de som ikke er klare til å signere/melde seg inn. Den var en antakelse i wireframet. <strong>FIVH må bekrefte</strong> om den skal med, og hvilken backend (Kobler / GP / Formie) — da kobles skjemaet på i fase 05 (Craft).</span></span></h2>
+      <p class="section-subtitle">Ikke klar til å signere ennå? Få nyheter og gjennomslag rett i innboksen.</p>
+      <form class="nyhetsbrev__form" onsubmit="event.preventDefault(); this.querySelector('button').innerText='PÅMELDT ✓';">
+        <input type="email" name="epost" placeholder="Din e-postadresse" aria-label="E-postadresse" required>
+        <button type="submit" class="btn btn--primary">MELD MEG PÅ</button>
+      </form>
+      <label class="consent">
+        <input type="checkbox" required>
+        <span>Jeg samtykker til å motta nyhetsbrev fra Framtiden i våre hender. Du kan melde deg av når som helst. Se <span class="tbd">[personvernerklæring-URL · FIVH]</span>.</span>
+      </label>
+    </div>
+  </section>
+
+  <!-- 9 · FOOTER -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__col">
+        <div class="logo-placeholder logo-placeholder--light">LOGO</div>
+        <p class="footer__tagline">Framtiden i våre hender — Norges største miljø- og solidaritetsorganisasjon. Nesten 50 000 medlemmer som krever en mer rettferdig framtid.</p>
+      </div>
+      <div class="footer__col">
+        <h4>KAMPSAKER</h4>
+        <a href="#kampsaker">Stopp Temu</a>
+        <a href="#kampsaker">Mer norsk plantemat</a>
+      </div>
+      <div class="footer__col">
+        <h4>ENGASJER DEG</h4>
+        <a href="#kampanjer">Skriv under</a>
+        <a href="#medlem">Bli medlem</a>
+        <a href="#nyhetsbrev">Nyhetsbrev</a>
+        <a href="#resultater">Våre seire</a>
+      </div>
+      <div class="footer__col">
+        <h4>OM FIVH</h4>
+        <p><span class="tbd">[Kontakt / adresse · FIVH]</span></p>
+        <a href="#personvern-TBD">Personvernerklæring</a>
+        <a href="#cookies-TBD">Informasjonskapsler</a>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div class="container">
+        <p>&copy; 2026 Framtiden i våre hender · Innholdsutkast v2 — til gjennomgang, ikke endelig design.</p>
+        <div class="footer__bottom-links">
+          <a href="#personvern-TBD">Personvern</a>
+          <a href="#cookies-TBD">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="anno-ctrl" id="annoToggle" type="button" aria-pressed="true" title="Oransje prikker = strategiske kommentarer">Skjul kommentarer</button>
+
+  <script>
+    (function () {
+      var wraps = document.querySelectorAll('.anno-wrap');
+      function closeAll(except) {
+        document.querySelectorAll('.anno-pop.open').forEach(function (p) {
+          if (p !== except) {
+            p.classList.remove('open');
+            var b = p.parentElement.querySelector('.anno');
+            if (b) b.setAttribute('aria-expanded', 'false');
+          }
+        });
+      }
+      wraps.forEach(function (w) {
+        var btn = w.querySelector('.anno');
+        var pop = w.querySelector('.anno-pop');
+        btn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          var isOpen = pop.classList.contains('open');
+          closeAll();
+          if (!isOpen) { pop.classList.add('open'); btn.setAttribute('aria-expanded', 'true'); }
+        });
+        pop.addEventListener('click', function (e) { e.stopPropagation(); });
+      });
+      document.addEventListener('click', function () { closeAll(); });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+          var open = document.querySelector('.anno-pop.open');
+          if (open) { var b = open.parentElement.querySelector('.anno'); closeAll(); if (b) b.focus(); }
+        }
+      });
+      var ctrl = document.getElementById('annoToggle');
+      ctrl.addEventListener('click', function () {
+        var hidden = document.body.classList.toggle('anno-hidden');
+        closeAll();
+        ctrl.textContent = hidden ? 'Vis kommentarer' : 'Skjul kommentarer';
+        ctrl.setAttribute('aria-pressed', String(!hidden));
+      });
+    })();
+  </script>
+
+</body>
+</html>
