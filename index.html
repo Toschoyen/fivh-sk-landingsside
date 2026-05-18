@@ -209,19 +209,32 @@
     @media (prefers-reduced-motion: reduce) { .nyhetsbrev__send { transition: none; } }
     .nyhetsbrev__send:hover { opacity: 0.88; }
 
-    /* === FOOTER === */
-    .footer { background: var(--blaa-mork); color: #c9d6e2; padding: 52px 0 0; }
-    .footer__inner { display: grid; grid-template-columns: 1fr; gap: 30px; padding-bottom: 36px; }
-    .footer__tagline { font-size: 0.84rem; color: #9fb4c8; margin: 12px 0 0; max-width: 300px; }
-    .footer__col h4 { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; color: #8aa3bc; margin-bottom: 14px; }
-    .footer__col a, .footer__col p { display: block; font-size: 0.82rem; color: #b9c8d8; margin-bottom: 9px; }
-    .footer__col a:hover { color: #fff; }
-    .footer__bottom { border-top: 1px solid #1d3a59; padding: 18px 0; }
-    .footer__bottom .container { display: flex; flex-direction: column; gap: 10px; }
-    .footer__bottom p { font-size: 0.74rem; color: #7f97ad; }
-    .footer__bottom-links { display: flex; gap: 20px; flex-wrap: wrap; }
-    .footer__bottom-links a { font-size: 0.72rem; color: #7f97ad; }
-    .footer__bottom-links a:hover { color: #c9d6e2; }
+    /* === FOOTER (speiler FIVHs eksisterende footer) === */
+    .footer { background: var(--blaa-mork); color: #fff; padding: 56px 0 36px; }
+    .footer__topp { display: flex; flex-direction: column; gap: 40px; }
+    .footer__merke { display: flex; flex-direction: column; gap: 26px; align-items: flex-start; }
+    .footer__hovedlenker a { display: block; font-size: 1.9rem; font-weight: 700; color: #fff; margin-bottom: 10px; }
+    .footer__hovedlenker a:hover { opacity: 0.8; }
+    .footer__badge {
+      width: 150px; height: 150px; border-radius: 50%; background: #2f5fd6; color: #fff;
+      display: flex; align-items: center; justify-content: center; text-align: center;
+      padding: 22px; font-size: 0.72rem; font-weight: 700; line-height: 1.4; letter-spacing: 0.03em;
+    }
+    .footer__feed { font-size: 0.72rem; color: #6b7f99; margin-top: 8px; }
+    .footer__sok input {
+      width: 100%; background: transparent; border: 1px solid #2a3f63; color: #fff;
+      padding: 16px 18px; border-radius: 6px; font-size: 0.95rem; font-family: inherit; margin-bottom: 36px;
+    }
+    .footer__sok input::placeholder { color: #8aa3bc; }
+    .footer__sok input:focus { outline: none; border-color: #4a6da0; }
+    .footer__kolonner { display: grid; grid-template-columns: 1fr 1fr; gap: 32px 24px; }
+    .footer__kol h4 { font-size: 0.95rem; font-weight: 700; color: #fff; margin-bottom: 14px; }
+    .footer__kol a, .footer__kol p { display: block; font-size: 0.86rem; color: #c2cee0; margin-bottom: 9px; }
+    .footer__kol a:hover { color: #fff; }
+    @media (min-width: 900px) {
+      .footer__topp { display: grid; grid-template-columns: 260px 1fr; gap: 56px; align-items: start; }
+      .footer__kolonner { grid-template-columns: repeat(4, 1fr); gap: 38px 28px; }
+    }
 
     /* === STRATEGI-BOBLER === */
     .anno-wrap { position: relative; display: inline-block; vertical-align: middle; margin-left: 6px; }
@@ -259,8 +272,6 @@
       .hero__media { flex: 1 1 45%; }
       .hero__title { font-size: 2.6rem; }
       .grid--to { grid-template-columns: repeat(2, 1fr); }
-      .footer__inner { grid-template-columns: 1.6fr 1fr 1fr 1fr; }
-      .footer__bottom .container { flex-direction: row; justify-content: space-between; align-items: center; }
     }
     /* Mobil: popover som bunn-ark for å unngå overflow */
     @media (max-width: 600px) {
@@ -346,7 +357,7 @@
   <div class="topbar"></div>
   <header class="header">
     <div class="container header__inner">
-      <a href="#topp" class="header__logo" aria-label="Framtiden i våre hender, til forsiden">Framtiden i<br>våre hender<span class="anno-wrap"><button class="anno" type="button" aria-expanded="false" aria-label="Vis kommentar"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-5 4V6a2 2 0 0 1 2-2z"/></svg></button><span class="anno-pop" role="note"><strong>Toppmeny</strong><br><br><strong>Hva dette er:</strong> Vår vanlige toppmeny med logo, en «Bli medlem»-knapp og menyen.<br><br><strong>Hvorfor det er bygd slik:</strong> Dette er den ferdige toppmenyen vi allerede bruker på nettsiden, så vi gjenbruker den i stedet for å lage noe nytt. «Bli medlem» ligger godt synlig fordi medlemskap er hovedmålet for kampanjen. Resten av lenkene ligger bak «Meny», akkurat som ellers på siden vår.</span></span></a>
+      <a href="#topp" class="header__logo" aria-label="Framtiden i våre hender, til forsiden">Framtiden i<br>våre hender</a>
       <div class="header__hoyre">
         <a href="#medlem" class="header__medlem">Bli medlem</a>
         <button class="header__meny" type="button" aria-label="Åpne meny">Meny <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
@@ -583,38 +594,79 @@
     </div>
   </section>
 
-  <!-- 9 · FOOTER -->
+  <!-- 9 · FOOTER (speiler FIVHs eksisterende footer) -->
   <footer class="footer">
-    <div class="container footer__inner">
-      <div class="footer__col">
-        <div class="logo-placeholder logo-placeholder--light">LOGO</div>
-        <p class="footer__tagline">Framtiden i våre hender, Norges største miljø- og solidaritetsorganisasjon. Nesten 50 000 medlemmer som krever en mer rettferdig framtid.</p>
+    <div class="container footer__topp">
+      <div class="footer__merke">
+        <nav class="footer__hovedlenker" aria-label="Snarveier">
+          <a href="#medlem" class="serif">Bli medlem</a>
+          <a href="#kampanjer" class="serif">Kampanjer</a>
+          <a href="#">Om oss</a>
+        </nav>
+        <div class="footer__badge" role="img" aria-label="Bli medlem i dag, framtiden.no">BLI MEDLEM<br>I DAG!<br>framtiden.no</div>
+        <p class="footer__feed">Design and code by Feed</p>
       </div>
-      <div class="footer__col">
-        <h4>KAMPSAKER</h4>
-        <a href="#kampsaker">Stopp Temu</a>
-        <a href="#kampsaker">Mer norsk plantemat</a>
-      </div>
-      <div class="footer__col">
-        <h4>ENGASJER DEG</h4>
-        <a href="#kampanjer">Skriv under</a>
-        <a href="#medlem">Bli medlem</a>
-        <a href="#nyhetsbrev">Nyhetsbrev</a>
-        <a href="#resultater">Våre seire</a>
-      </div>
-      <div class="footer__col">
-        <h4>OM FIVH</h4>
-        <p><span class="tbd">[Kontakt / adresse · FIVH]</span></p>
-        <a href="#personvern-TBD">Personvernerklæring</a>
-        <a href="#cookies-TBD">Informasjonskapsler</a>
-      </div>
-    </div>
-    <div class="footer__bottom">
-      <div class="container">
-        <p>&copy; 2026 Framtiden i våre hender · Innholdsutkast v2, til gjennomgang, ikke endelig design.</p>
-        <div class="footer__bottom-links">
-          <a href="#personvern-TBD">Personvern</a>
-          <a href="#cookies-TBD">Cookies</a>
+      <div class="footer__hoyre">
+        <div class="footer__sok">
+          <input type="search" placeholder="Søk" aria-label="Søk" onkeydown="if(event.key==='Enter')event.preventDefault();">
+        </div>
+        <div class="footer__kolonner">
+          <div class="footer__kol">
+            <h4>Tema</h4>
+            <a href="#kampsaker">Overforbruk</a>
+            <a href="#kampsaker">Bærekraftig mat</a>
+            <a href="#">Klær</a>
+            <a href="#">Penger</a>
+          </div>
+          <div class="footer__kol">
+            <h4>Skriv under</h4>
+            <a href="#kampanjer">Nok overforbruk – Stopp Temu!</a>
+            <a href="#kampanjer">Gjør det lett å spise sunt!</a>
+            <a href="#kampanjer">Spis grønnere – ta 5 av 7-utfordringen!</a>
+          </div>
+          <div class="footer__kol">
+            <h4>Ressurser</h4>
+            <a href="#">Medlemsblad</a>
+            <a href="#">Rapporter</a>
+            <a href="#">Miljøprosjekter</a>
+            <a href="#">Arrangementer</a>
+            <a href="#">Ressursbank for lokallag</a>
+          </div>
+          <div class="footer__kol">
+            <h4>Om oss</h4>
+            <a href="#">Om oss</a>
+            <a href="#">Ansatte</a>
+            <a href="#">Lokallag</a>
+            <a href="#">Ledige stillinger</a>
+            <a href="#personvern-TBD">Personvern</a>
+          </div>
+          <div class="footer__kol">
+            <h4>Kontakt</h4>
+            <a href="tel:+4722033150">+47 22 03 31 50</a>
+            <a href="mailto:post@framtiden.no">post@framtiden.no</a>
+            <p>Økernveien 94, 0579 Oslo</p>
+            <a href="#">Varsling</a>
+          </div>
+          <div class="footer__kol">
+            <h4>Følg oss</h4>
+            <a href="#nyhetsbrev">Nyhetsbrev</a>
+            <a href="#">Instagram</a>
+            <a href="#">LinkedIn</a>
+            <a href="#">Facebook</a>
+            <a href="#">TikTok</a>
+          </div>
+          <div class="footer__kol">
+            <h4>Støtt oss</h4>
+            <a href="#medlem">Bli medlem</a>
+            <a href="#">Gi en gave til framtiden</a>
+            <p>Vipps 9090</p>
+            <p>Gavekonto: 1254 62 79977</p>
+          </div>
+          <div class="footer__kol">
+            <h4>Språk</h4>
+            <a href="#">Norsk</a>
+            <a href="#">English</a>
+          </div>
         </div>
       </div>
     </div>
