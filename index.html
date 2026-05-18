@@ -137,21 +137,29 @@
     .hero__actions { display: flex; flex-wrap: wrap; gap: 12px; }
     .hero__media .image-placeholder { min-height: 240px; }
 
-    /* === TIDSLINJE === */
-    .timeline { display: flex; flex-direction: column; gap: 14px; max-width: 760px; }
-    .timeline__item {
-      display: flex; gap: 16px; align-items: flex-start;
-      border: 1px solid var(--graa-linje); border-left: 4px solid var(--blaa);
-      border-radius: 4px; padding: 16px 18px;
+    /* === DETTE HAR VI OPPNÅDD (speiler FIVHs eksisterende gjennomslag-komponent) === */
+    .seire__tittel-seksjon { text-align: center; font-size: 1.9rem; font-weight: 700; margin-bottom: 34px; }
+    .seire__liste { position: relative; max-width: 720px; margin: 0 auto; padding-left: 28px; }
+    .seire__liste::before { content: ""; position: absolute; left: 5px; top: 6px; bottom: 46px; width: 2px; background: var(--oransje); }
+    .seire__item { position: relative; padding-bottom: 34px; }
+    .seire__item::before { content: ""; position: absolute; left: -28px; top: 3px; width: 12px; height: 12px; border-radius: 50%; background: var(--oransje); box-shadow: 0 0 0 3px #fff; }
+    .seire__topp { display: flex; align-items: center; gap: 14px; margin-bottom: 12px; }
+    .seire__dato { font-size: 0.9rem; font-weight: 700; color: var(--tekst); white-space: nowrap; }
+    .seire__strek { flex: 1; height: 1px; background: #cdd0d3; }
+    .merke { display: inline-flex; align-items: center; gap: 7px; background: #15110d; color: #fff; font-size: 0.72rem; font-weight: 700; padding: 6px 13px; border-radius: 999px; margin-bottom: 10px; }
+    .merke .sol { color: #f5b301; }
+    .seire__tittel { font-size: 1.3rem; font-weight: 700; line-height: 1.25; margin-bottom: 8px; }
+    .seire__tekst { font-size: 0.9rem; color: #7a5230; max-width: 620px; }
+    .seire__tekst a { text-decoration: underline; }
+    .seire__item--fade .seire__tekst {
+      -webkit-mask-image: linear-gradient(180deg, #000 10%, transparent 95%);
+      mask-image: linear-gradient(180deg, #000 10%, transparent 95%);
     }
-    .timeline__date {
-      flex-shrink: 0; font-size: 0.72rem; font-weight: 700; color: #fff;
-      background: var(--blaa); padding: 4px 10px; border-radius: 3px; letter-spacing: 0.04em;
-      min-width: 64px; text-align: center;
+    .seire__mer { text-align: center; margin-top: 4px; }
+    @media (min-width: 900px) {
+      .seire__tittel-seksjon { font-size: 2.3rem; }
+      .seire__tittel { font-size: 1.5rem; }
     }
-    .timeline__body strong { display: block; font-size: 0.96rem; margin-bottom: 4px; }
-    .timeline__body p { font-size: 0.88rem; color: var(--tekst-svak); }
-    .timeline__more { margin-top: 18px; }
 
     /* === KORT-GRID === */
     .grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
@@ -377,31 +385,31 @@
     </div>
   </section>
 
-  <!-- 4 · DETTE HAR VI OPPNÅDD -->
-  <section id="resultater" style="background:var(--graa-bg);">
+  <!-- 4 · DETTE HAR VI OPPNÅDD (speiler FIVHs eksisterende gjennomslag-komponent) -->
+  <section id="resultater">
     <div class="container">
-      <p class="section-label">DETTE HAR VI OPPNÅDD</p>
-      <h2 class="section-title">Vi vinner faktisk fram<span class="anno-wrap"><button class="anno" type="button" aria-expanded="false" aria-label="Vis strategikommentar"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-5 4V6a2 2 0 0 1 2-2z"/></svg></button><span class="anno-pop" role="note"><strong>Strategi, bevis = tillit:</strong> Kald trafikk trenger «proof» før de stoler på oss. Datostemplede seire er FIVHs eget mønster og vervesamtalens «seier»-takt. <strong>Eksakte årstall på åpenhetsloven/matsvinnloven er IKKE bekreftet</strong> i kildedokumentene (de bruker «i fjor»/«på 5 år»), derfor merket som placeholder. Brukthandelloven 2024 er eksplisitt bekreftet.</span></span></h2>
-      <p class="section-subtitle">Nesten 50 000 medlemmer i ryggen gir resultater. På få år har folkekrav blitt til lov.</p>
-      <div class="timeline">
-        <div class="timeline__item">
-          <span class="timeline__date">2024</span>
-          <div class="timeline__body"><strong>Brukthandelloven endret</strong><p>Vi fikk Stortinget til å forenkle reglene for bruktbutikker, et viktig skritt for mer ombruk.</p></div>
+      <h2 class="seire__tittel-seksjon serif">Dette har vi oppnådd sammen<span class="anno-wrap"><button class="anno" type="button" aria-expanded="false" aria-label="Vis strategikommentar"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-5 4V6a2 2 0 0 1 2-2z"/></svg></button><span class="anno-pop" role="note"><strong>Strategi og begrensning:</strong> Kald trafikk trenger bevis før de stoler på oss. Datostemplede gjennomslag er FIVHs eget mønster og vervesamtalens «seier»-takt. Utseendet speiler FIVHs EKSISTERENDE «Dette har vi oppnådd»-komponent (skjermbilde fra Tobias): oransje tidslinje med prikker, dato og strek, svart «Gjennomslag»-merke, serif-tittel, dempet brødtekst, «Vis mer»-knapp. Datoene er FIVHs faktiske (matsvinnloven 27. mai 2025, brukthandelloven 5. april 2024, klimastatistikk 13. februar 2024), så de tidligere `[ÅR]`-placeholderne er løst. Kun ferdige Feed-elementer.</span></span></h2>
+      <div class="seire__liste">
+        <div class="seire__item">
+          <div class="seire__topp"><span class="seire__dato">27. mai 2025</span><span class="seire__strek"></span></div>
+          <span class="merke"><span class="sol" aria-hidden="true">☀</span>Gjennomslag</span>
+          <h3 class="seire__tittel serif">Endelig er matsvinnloven vedtatt!</h3>
+          <p class="seire__tekst">Framtiden i våre hender har jobbet for matsvinnloven i åtte år, endelig ble den vedtatt av Stortinget. <a href="#seire-matsvinn-TBD">Les mer om den her.</a> <span class="tbd">URL · FIVH</span></p>
         </div>
-        <div class="timeline__item">
-          <span class="timeline__date"><span class="tbd">[ÅR · FIVH]</span></span>
-          <div class="timeline__body"><strong>Matsvinnloven vedtatt</strong><p>Etter mange års kamp ble matsvinn lovregulert, slutt på at fullt brukbar mat kastes i matbransjen.</p></div>
+        <div class="seire__item">
+          <div class="seire__topp"><span class="seire__dato">05. april 2024</span><span class="seire__strek"></span></div>
+          <span class="merke"><span class="sol" aria-hidden="true">☀</span>Gjennomslag</span>
+          <h3 class="seire__tittel serif">Farvel til den kronglete brukthandelloven</h3>
+          <p class="seire__tekst">Endelig blir det lettere å drive brukthandel i Norge. Med deres underskrifter har vi fått endret den utdaterte brukthandelloven. Loven krevde blant annet tungvint politigodkjenning og 14 dagers karantenetid for alle varer. Heldigvis er nå loven fjernet for de aller fleste varer.</p>
         </div>
-        <div class="timeline__item">
-          <span class="timeline__date"><span class="tbd">[ÅR · FIVH]</span></span>
-          <div class="timeline__body"><strong>Åpenhetsloven</strong><p>Selskaper må være åpne om forholdene i leverandørkjeden. Et folkekrav som ble lov.</p></div>
-        </div>
-        <div class="timeline__item">
-          <span class="timeline__date">5 år</span>
-          <div class="timeline__body"><strong>To lover på fem år</strong><p>Åpenhetsloven og matsvinnloven kom på bare fem år, fordi vi ble mange nok til å bli hørt.</p></div>
+        <div class="seire__item seire__item--fade">
+          <div class="seire__topp"><span class="seire__dato">13. februar 2024</span><span class="seire__strek"></span></div>
+          <span class="merke"><span class="sol" aria-hidden="true">☀</span>Gjennomslag</span>
+          <h3 class="seire__tittel serif">Norges første offisielle forbruksbaserte klimastatistikk</h3>
+          <p class="seire__tekst">Nå har vi en offisiell, forbruksbasert klimastatistikk for Norge. Det har vi jobbet for siden 2019. Med dette kan vi utforme en mer effektiv og rettferdig klimapolitikk for utslippene fra forbruket vårt, og bli en del av løsningen i den globale klimaomstillingen.</p>
         </div>
       </div>
-      <div class="timeline__more"><a href="#flere-seire-TBD" class="textlink">Vis flere seire →</a> <span class="tbd">[URL · FIVH]</span></div>
+      <div class="seire__mer"><a href="#flere-seire-TBD" class="btn--pill">Vis mer</a> <span class="tbd">URL · FIVH</span></div>
     </div>
   </section>
 
