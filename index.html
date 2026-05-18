@@ -117,19 +117,24 @@
     .callout ul { margin: 0; padding-left: 18px; }
     .callout li { font-size: 0.92rem; color: var(--tekst); margin-bottom: 6px; }
 
-    /* === HEADER === */
-    .header {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(255,255,255,0.96); backdrop-filter: blur(6px);
-      border-bottom: 1px solid var(--graa-linje);
-    }
-    .header__inner { display: flex; align-items: center; justify-content: space-between; height: 60px; }
-    .header__nav { display: none; gap: 22px; }
-    .header__nav a { font-size: 0.74rem; font-weight: 600; letter-spacing: 0.06em; color: var(--tekst); }
-    .header__nav a:hover { color: var(--blaa); }
+    /* === HEADER / NAVIGASJON (speiler FIVHs eksisterende komponent) === */
+    .topbar { height: 6px; background: #3a3a3a; }
+    .header { background: #fff; border-bottom: 1px solid var(--graa-linje); }
+    .header__inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 74px; padding: 14px 0; }
+    .header__logo { font-weight: 800; font-size: 1.05rem; line-height: 1.12; color: var(--tekst); }
+    .header__hoyre { display: flex; align-items: center; gap: 16px; }
+    .header__medlem { background: var(--oransje); color: #1f2429; border-radius: 999px; padding: 11px 22px; font-size: 0.92rem; font-weight: 700; transition: opacity 0.2s ease; }
+    @media (prefers-reduced-motion: reduce) { .header__medlem { transition: none; } }
+    .header__medlem:hover { opacity: 0.88; }
+    .header__meny { display: inline-flex; align-items: center; gap: 8px; background: none; border: none; cursor: pointer; font-size: 0.95rem; font-weight: 600; color: var(--tekst); font-family: inherit; }
+    .header__meny svg { width: 20px; height: 20px; }
+    .brodsmule { background: var(--graa-bg); border-bottom: 1px solid var(--graa-linje); }
+    .brodsmule .container { display: flex; align-items: center; gap: 10px; padding-top: 12px; padding-bottom: 12px; font-size: 0.85rem; }
+    .brodsmule a { color: var(--blaa); text-decoration: underline; }
+    .brodsmule__pil { color: var(--tekst-svak); }
 
     /* === HERO === */
-    .hero { background: var(--graa-bg); padding-top: 96px; padding-bottom: 48px; }
+    .hero { background: var(--graa-bg); padding-top: 40px; padding-bottom: 48px; }
     .hero__grid { display: flex; flex-direction: column; gap: 28px; }
     .hero__eyebrow { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--blaa); margin-bottom: 12px; }
     .hero__title { font-size: 2rem; font-weight: 800; line-height: 1.15; margin-bottom: 14px; }
@@ -178,33 +183,31 @@
 
     /* === MEDLEM (modulær: to varianter) === */
     .medlem { background: var(--blaa-tint); }
-    .medlem__intro { max-width: 680px; margin-bottom: 24px; }
-    .medlem__variants { display: grid; grid-template-columns: 1fr; gap: 18px; }
-    .variant {
-      background: #fff; border: 1px solid var(--graa-linje);
-      border-radius: 6px; padding: 22px 20px;
-    }
-    .variant__tag {
-      display: inline-block; font-size: 0.62rem; font-weight: 700;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      background: var(--graa-bg); color: var(--tekst-svak);
-      padding: 3px 9px; border-radius: 3px; margin-bottom: 12px;
-    }
-    .variant--b .variant__tag { background: var(--oransje); color: #fff; }
-    .variant__title { font-size: 1.25rem; font-weight: 700; margin-bottom: 10px; }
-    .variant p { color: var(--tekst-svak); font-size: 0.92rem; margin-bottom: 14px; }
-    .variant ul { margin: 0 0 16px; padding-left: 18px; }
-    .variant li { font-size: 0.9rem; color: var(--tekst); margin-bottom: 5px; }
+    .medlem__inner { max-width: 680px; }
 
-    /* === NYHETSBREV === */
-    .nyhetsbrev { background: var(--graa-bg); }
-    .nyhetsbrev__form { display: flex; flex-direction: column; gap: 12px; max-width: 440px; margin-top: 16px; }
-    .nyhetsbrev__form input {
-      padding: 12px 14px; font-size: 0.9rem; border: 1px solid #c7ccd1;
-      border-radius: 4px; font-family: inherit; width: 100%;
+    /* === NYHETSBREV (speiler FIVHs eksisterende komponent) === */
+    .nyhetsbrev { background: #fff; }
+    .nyhetsbrev__inner { max-width: 680px; }
+    .nyhetsbrev__tittel { font-size: 1.9rem; font-weight: 700; margin-bottom: 14px; }
+    .nyhetsbrev__tittel .sol { color: #15110d; margin-right: 12px; }
+    .nyhetsbrev__sub { font-size: 1rem; color: var(--tekst); margin-bottom: 24px; }
+    .nyhetsbrev__skjema { max-width: 620px; }
+    .nyhetsbrev__label { display: block; font-size: 0.82rem; font-weight: 700; margin-bottom: 7px; }
+    .paakrevd { color: #d6342c; }
+    .nyhetsbrev__skjema input[type="email"] {
+      width: 100%; padding: 15px 14px; font-size: 1rem; font-family: inherit;
+      border: 1px solid #c7ccd1; border-radius: 4px; margin-bottom: 16px;
     }
-    .nyhetsbrev__form input:focus { outline: none; border-color: var(--blaa); }
-    .consent { font-size: 0.74rem; color: var(--tekst-svak); display: flex; gap: 8px; align-items: flex-start; max-width: 440px; margin-top: 12px; }
+    .nyhetsbrev__skjema input[type="email"]:focus { outline: none; border-color: var(--blaa); }
+    .nyhetsbrev__samtykke { display: flex; gap: 9px; align-items: flex-start; font-size: 0.88rem; color: var(--tekst); margin-bottom: 20px; }
+    .nyhetsbrev__samtykke a { text-decoration: underline; }
+    .nyhetsbrev__send {
+      background: var(--oransje); color: #1f2429; border: none; cursor: pointer;
+      border-radius: 999px; padding: 13px 32px; font-size: 0.98rem; font-weight: 700;
+      font-family: inherit; transition: opacity 0.2s ease;
+    }
+    @media (prefers-reduced-motion: reduce) { .nyhetsbrev__send { transition: none; } }
+    .nyhetsbrev__send:hover { opacity: 0.88; }
 
     /* === FOOTER === */
     .footer { background: var(--blaa-mork); color: #c9d6e2; padding: 52px 0 0; }
@@ -250,18 +253,14 @@
     /* === DESKTOP-BRUDD (mobil-først → ett brudd) === */
     @media (min-width: 900px) {
       section { padding: 72px 0; }
-      .header__nav { display: flex; }
-      .hero { padding-top: 116px; padding-bottom: 64px; }
+      .hero { padding-top: 56px; padding-bottom: 64px; }
       .hero__grid { flex-direction: row; align-items: center; }
       .hero__copy { flex: 1 1 55%; }
       .hero__media { flex: 1 1 45%; }
       .hero__title { font-size: 2.6rem; }
       .grid--to { grid-template-columns: repeat(2, 1fr); }
-      .medlem__variants { grid-template-columns: 1fr 1fr; }
       .footer__inner { grid-template-columns: 1.6fr 1fr 1fr 1fr; }
       .footer__bottom .container { flex-direction: row; justify-content: space-between; align-items: center; }
-      .nyhetsbrev__form { flex-direction: row; align-items: flex-start; }
-      .nyhetsbrev__form input { flex: 1; }
     }
     /* Mobil: popover som bunn-ark for å unngå overflow */
     @media (max-width: 600px) {
@@ -343,20 +342,24 @@
 </head>
 <body>
 
-  <!-- 1 · HEADER -->
+  <!-- 1 · HEADER / NAVIGASJON (speiler FIVHs eksisterende komponent) -->
+  <div class="topbar"></div>
   <header class="header">
     <div class="container header__inner">
-      <a href="#topp" aria-label="FIVH forside"><div class="logo-placeholder">LOGO</div></a>
-      <nav class="header__nav" aria-label="Hovedmeny">
-        <a href="#hvem">HVEM ER FIVH</a>
-        <a href="#resultater">RESULTATER</a>
-        <a href="#kampsaker">KAMPSAKER</a>
-        <a href="#kampanjer">SKRIV UNDER</a>
-        <a href="#medlem">BLI MEDLEM</a>
-      </nav>
-      <a href="#medlem" class="btn btn--primary btn--sm">BLI MEDLEM</a>
+      <a href="#topp" class="header__logo" aria-label="Framtiden i våre hender, til forsiden">Framtiden i<br>våre hender<span class="anno-wrap"><button class="anno" type="button" aria-expanded="false" aria-label="Vis kommentar"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-5 4V6a2 2 0 0 1 2-2z"/></svg></button><span class="anno-pop" role="note"><strong>Toppmeny</strong><br><br><strong>Hva dette er:</strong> Vår vanlige toppmeny med logo, en «Bli medlem»-knapp og menyen.<br><br><strong>Hvorfor det er bygd slik:</strong> Dette er den ferdige toppmenyen vi allerede bruker på nettsiden, så vi gjenbruker den i stedet for å lage noe nytt. «Bli medlem» ligger godt synlig fordi medlemskap er hovedmålet for kampanjen. Resten av lenkene ligger bak «Meny», akkurat som ellers på siden vår.</span></span></a>
+      <div class="header__hoyre">
+        <a href="#medlem" class="header__medlem">Bli medlem</a>
+        <button class="header__meny" type="button" aria-label="Åpne meny">Meny <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+      </div>
     </div>
   </header>
+  <nav class="brodsmule" aria-label="Brødsmulesti">
+    <div class="container">
+      <a href="#">Forsiden</a>
+      <span class="brodsmule__pil" aria-hidden="true">→</span>
+      <a href="#topp">Sommerkampanjen</a>
+    </div>
+  </nav>
 
   <!-- 2 · HERO «Hvem er FIVH» -->
   <section id="topp" class="hero">
@@ -552,7 +555,7 @@
   <section id="medlem" class="medlem">
     <div class="container medlem__inner">
       <p class="section-label">STØTT ARBEIDET</p>
-      <h2 class="section-title" style="margin-bottom:10px;">Bli medlem, gi kampen tyngde<span class="anno-wrap"><button class="anno" type="button" aria-expanded="false" aria-label="Vis kommentar"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-5 4V6a2 2 0 0 1 2-2z"/></svg></button><span class="anno-pop" role="note"><strong>Bli medlem (kampanjens hovedmål)</strong><br><br><strong>Hva dette er:</strong> Inviterer folk til å bli medlem. Dette er det viktigste målet for kampanjen.<br><br><strong>Hvorfor det er bygd slik:</strong> Prosjektleder har valgt den tydelige varianten: en kort begrunnelse pluss tre punkter på hva medlemskapet ditt faktisk gjør. Selve innmeldingen skjer på vår egen medlemsside.</span></span></h2>
+      <h2 class="section-title" style="margin-bottom:10px;">Bli medlem, gi kampen tyngde<span class="anno-wrap"><button class="anno" type="button" aria-expanded="false" aria-label="Vis kommentar"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-5 4V6a2 2 0 0 1 2-2z"/></svg></button><span class="anno-pop" role="note"><strong>Bli medlem (kampanjens hovedmål)</strong><br><br><strong>Hva dette er:</strong> Inviterer folk til å bli medlem. Dette er det viktigste målet for kampanjen.<br><br><strong>Hvorfor det er bygd slik:</strong> Jeg har bygd den som den tydelige varianten: en kort begrunnelse pluss tre punkter på hva medlemskapet ditt faktisk gjør. Selve innmeldingen skjer på vår egen medlemsside.<br><br><strong>Må godkjennes:</strong> Linn (prosjektleder) bør bekrefte at vi går for denne tydelige vinklingen.</span></span></h2>
       <p style="color:var(--tekst-svak);font-size:0.95rem;max-width:620px;">Underskrifter setter saker på dagsorden. Medlemmer gir oss tyngden til å vinne dem. Nesten 50 000 medlemmer ga oss åpenhetsloven og matsvinnloven, bli den neste.</p>
       <ul style="margin:14px 0 22px 1.1rem;color:var(--tekst);font-size:0.92rem;">
         <li style="margin-bottom:5px;">Du gjør folkekravene umulige å ignorere</li>
@@ -563,20 +566,20 @@
     </div>
   </section>
 
-  <!-- 8 · NYHETSBREV (behold, flagget for bekreftelse) -->
+  <!-- 8 · NYHETSBREV (speiler FIVHs eksisterende nyhetsbrev-komponent) -->
   <section id="nyhetsbrev" class="nyhetsbrev">
-    <div class="container">
-      <p class="section-label">HOLD DEG OPPDATERT</p>
-      <h2 class="section-title">Følg kampen – få seirene først<span class="anno-wrap"><button class="anno" type="button" aria-expanded="false" aria-label="Vis kommentar"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-5 4V6a2 2 0 0 1 2-2z"/></svg></button><span class="anno-pop" role="note"><strong>Nyhetsbrev</strong><br><br><strong>Hva dette er:</strong> Lar folk som ikke er klare til å skrive under eller bli medlem få nyheter på e-post.<br><br><strong>Hvorfor det er bygd slik:</strong> Et alternativ med lav terskel, så vi ikke mister dem som er interessert, men ikke klare ennå. Jeg har lagt den inn som et forslag.<br><br><strong>Må godkjennes:</strong> Prosjektleder må bestemme om seksjonen skal være med, og hvilket e-postsystem vi bruker.</span></span></h2>
-      <p class="section-subtitle">Ikke klar til å signere ennå? Få nyheter og gjennomslag rett i innboksen.</p>
-      <form class="nyhetsbrev__form" onsubmit="event.preventDefault(); this.querySelector('button').innerText='PÅMELDT ✓';">
-        <input type="email" name="epost" placeholder="Din e-postadresse" aria-label="E-postadresse" required>
-        <button type="submit" class="btn btn--primary">MELD MEG PÅ</button>
+    <div class="container nyhetsbrev__inner">
+      <h2 class="nyhetsbrev__tittel serif"><span class="sol" aria-hidden="true">✻</span>Nyhetsbrev<span class="anno-wrap"><button class="anno" type="button" aria-expanded="false" aria-label="Vis kommentar"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-5 4V6a2 2 0 0 1 2-2z"/></svg></button><span class="anno-pop" role="note"><strong>Nyhetsbrev</strong><br><br><strong>Hva dette er:</strong> Lar folk som ikke er klare til å skrive under eller bli medlem få nyheter på e-post.<br><br><strong>Hvorfor det er bygd slik:</strong> Et alternativ med lav terskel, så vi ikke mister dem som er interessert, men ikke klare ennå. Jeg har lagt den inn som et forslag.<br><br><strong>Må godkjennes:</strong> Linn (prosjektleder) må bestemme om seksjonen skal være med, og hvilket e-postsystem vi bruker.</span></span></h2>
+      <p class="nyhetsbrev__sub">Vil du holdes oppdatert? Få vårt nyhetsbrev hver 14. dag.</p>
+      <form class="nyhetsbrev__skjema" onsubmit="event.preventDefault(); this.querySelector('button').innerText='Sendt ✓';">
+        <label class="nyhetsbrev__label" for="nb-epost">E-postadresse <span class="paakrevd" aria-hidden="true">*</span></label>
+        <input id="nb-epost" type="email" name="epost" aria-label="E-postadresse" required>
+        <label class="nyhetsbrev__samtykke">
+          <input type="checkbox" required>
+          <span>Jeg godtar at dere bruker informasjonen jeg sender inn i tråd med <a href="#personvern-TBD">personvernerklæringen</a> <span class="tbd">URL · FIVH</span></span>
+        </label>
+        <button type="submit" class="nyhetsbrev__send">Send</button>
       </form>
-      <label class="consent">
-        <input type="checkbox" required>
-        <span>Jeg samtykker til å motta nyhetsbrev fra Framtiden i våre hender. Du kan melde deg av når som helst. Se <span class="tbd">[personvernerklæring-URL · FIVH]</span>.</span>
-      </label>
     </div>
   </section>
 
