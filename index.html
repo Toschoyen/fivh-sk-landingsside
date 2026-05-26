@@ -69,7 +69,6 @@
     }
     .section-title { font-size: 1.6rem; font-weight: 700; margin-bottom: 10px; line-height: 1.25; }
     .section-subtitle { color: var(--tekst-svak); max-width: 640px; font-size: 0.98rem; margin-bottom: 28px; }
-    .body-text { max-width: 640px; font-size: 0.98rem; margin-bottom: 8px; }
 
     .tbd {
       font-size: 0.82em; color: #8a6900; background: var(--gul-tint);
@@ -133,7 +132,8 @@
     .hero__title { font-size: 2rem; font-weight: 800; line-height: 1.15; margin-bottom: 14px; }
     .hero__subtitle { color: var(--tekst); font-size: 1.02rem; margin-bottom: 24px; max-width: 540px; }
     .hero__actions { display: flex; flex-wrap: wrap; gap: 12px; }
-    .hero__media .image-placeholder { min-height: 240px; }
+    .hero__media { display: flex; }
+    .hero__media .image-placeholder { min-height: 240px; height: 100%; }
 
     /* === DETTE HAR VI OPPNÅDD (speiler FIVHs eksisterende gjennomslag-komponent) === */
     .seire__tittel-seksjon { text-align: center; font-size: 1.9rem; font-weight: 700; margin-bottom: 34px; }
@@ -236,9 +236,10 @@
     @media (min-width: 900px) {
       section { padding: 72px 0; }
       .hero { padding-top: 56px; padding-bottom: 64px; }
-      .hero__grid { flex-direction: row; align-items: center; }
+      .hero__grid { flex-direction: row; align-items: stretch; }
       .hero__copy { flex: 1 1 55%; }
       .hero__media { flex: 1 1 45%; }
+      .hero__media .image-placeholder { min-height: 0; }
       .hero__title { font-size: 2.6rem; }
       .grid--to { grid-template-columns: repeat(2, 1fr); }
     }
@@ -322,41 +323,33 @@
     </div>
   </nav>
 
-  <!-- 2 · HERO «Hvem er FIVH» -->
+  <!-- 2 · HERO (slått sammen: «Hvem er FIVH» + «Bli medlem»-budskap, per prosjektgruppe-tilbakemelding) -->
   <section id="topp" class="hero">
     <div class="container hero__grid">
       <div class="hero__copy">
-        <h1 class="hero__title">Norges største stemme for miljø og solidaritet<span class="anno-wrap"><button class="anno" type="button" aria-expanded="false" aria-label="Vis kommentar"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-5 4V6a2 2 0 0 1 2-2z"/></svg></button><span class="anno-pop" role="note"><strong>Toppen: Hvem er FIVH</strong><br><br><strong>Hva dette er:</strong> Det aller første folk ser. Forteller kort og vennlig hvem vi er.<br><br><strong>Hvorfor det er bygd slik:</strong> De fleste som kommer hit kjenner oss ikke fra før. Vi presenterer oss først, uten å be om noe med en gang. Jeg tror folk blir mer positive til å engasjere seg lenger ned på siden enn hvis vi maser om et skjema med en gang.</span></span></h1>
-        <p class="hero__subtitle">Vi er Norges største miljø- og solidaritetsorganisasjon. Nesten 50 000 mennesker står sammen for at vi skal forbruke mindre og dele mer rettferdig, gjennom opplysning, folkekrav og politisk press.</p>
+        <h1 class="hero__title">Norges største stemme for miljø og solidaritet<span class="anno-wrap"><button class="anno" type="button" aria-expanded="false" aria-label="Vis kommentar"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-5 4V6a2 2 0 0 1 2-2z"/></svg></button><span class="anno-pop" role="note"><strong>Toppen: Hvem vi er + bli medlem</strong><br><br><strong>Hva dette er:</strong> Det første folk ser. Slått sammen «hvem er FIVH» og medlemskap-budskapet etter prosjektgruppe-tilbakemelding 2026-05-26. Bilde av verver(e) på høyre side.<br><br><strong>Hvorfor det er bygd slik:</strong> Prosjektgruppen ønsket at hva det vil si å være medlem skulle gjenta seg flere steder, og at primær-CTA skulle være «Bli medlem» allerede her. Vi setter medlemskap-budskapet øverst, kombinert med en kort hvem-vi-er, så sammenhengen er tydelig fra første sekund. Den fyldigere medlem-seksjonen lenger ned beholdes uendret.<br><br><strong>Må godkjennes:</strong> Linn (prosjektleder) bør bekrefte at ingress + medlems-punkter treffer.</span></span></h1>
+        <p class="hero__subtitle">Vi er Norges største miljø- og solidaritetsorganisasjon. Nesten 50 000 medlemmer står sammen for å forbruke mindre og dele mer rettferdig.</p>
+        <p class="hero__subtitle">Overforbruket driver klima- og naturkrisen, men dette er ikke din private skyld. Det er politikk. Framtiden i våre hender flytter ansvaret der det hører hjemme: til systemet og politikerne.</p>
+        <div class="callout">
+          <span class="callout__tag">Hva det vil si å være medlem</span>
+          <ul>
+            <li>Du gjør folkekravene umulige å ignorere</li>
+            <li>Du finansierer kampanjene som vinner fram</li>
+            <li>Du blir én av nesten 50 000, på vei mot enda flere</li>
+          </ul>
+        </div>
         <div class="hero__actions">
-          <a href="#hvem" class="btn btn--primary">BLI KJENT MED OSS</a>
+          <a href="#medlem-url-TBD" class="btn btn--primary">BLI MEDLEM</a> <span class="tbd">medlems-URL · FIVH</span>
           <a href="#kampsaker" class="btn btn--outline">SE KAMPSAKENE</a>
         </div>
       </div>
       <div class="hero__media">
-        <div class="image-placeholder">BILDE: bevegelse / mennesker (velges i fase 03)</div>
+        <div class="image-placeholder">BILDE: verver / ververe i samtale (velges i fase 03)</div>
       </div>
     </div>
   </section>
 
-  <!-- 3 · DETTE ER FIVH -->
-  <section id="hvem">
-    <div class="container">
-      <h2 class="section-title">Overforbruket er problemet. Vi er svaret.<span class="anno-wrap"><button class="anno" type="button" aria-expanded="false" aria-label="Vis kommentar"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-5 4V6a2 2 0 0 1 2-2z"/></svg></button><span class="anno-pop" role="note"><strong>Hva saken vår handler om</strong><br><br><strong>Hva dette er:</strong> Forklarer hovedproblemet vi kjemper mot, og hvordan vi skaper endring.<br><br><strong>Hvorfor det er bygd slik:</strong> Jeg vil flytte ansvaret bort fra den enkelte og over på systemet og politikken. Da slipper leseren å føle skyld, og blir mer motivert til å være med. Det er den samme vinklingen ververne bruker i samtalene ansikt til ansikt.</span></span></h2>
-      <p class="body-text">Vi lever som om vi har flere jordkloder. Overforbruket driver klima- og naturkrisen, men dette er ikke din private skyld. Det er politikk.</p>
-      <p class="body-text">Framtiden i våre hender flytter ansvaret der det hører hjemme: til systemet og politikerne. Vi opplyser, vi samler folkekrav, og vi presser fram endringer som varer.</p>
-      <div class="callout">
-        <span class="callout__tag">Dette jobber vi for</span>
-        <ul>
-          <li>Mindre overforbruk, en mer rettferdig deling av jordas ressurser</li>
-          <li>Vi gjør problemet til politikk, ikke privat skyld</li>
-          <li>Hver underskrift og hvert medlem gir oss tyngde til å vinne fram</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- 4 · DETTE HAR VI OPPNÅDD (speiler FIVHs eksisterende gjennomslag-komponent) -->
+  <!-- 3 · DETTE HAR VI OPPNÅDD (speiler FIVHs eksisterende gjennomslag-komponent) -->
   <section id="resultater">
     <div class="container">
       <h2 class="seire__tittel-seksjon serif">Dette har vi oppnådd sammen<span class="anno-wrap"><button class="anno" type="button" aria-expanded="false" aria-label="Vis kommentar"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-5 4V6a2 2 0 0 1 2-2z"/></svg></button><span class="anno-pop" role="note"><strong>Det vi har fått til</strong><br><br><strong>Hva dette er:</strong> Viser konkrete seire med dato, som matsvinnloven og brukthandelloven.<br><br><strong>Hvorfor det er bygd slik:</strong> Folk som ikke kjenner oss må se at vi faktisk får resultater før de stoler på oss og vil bidra. Oppstillingen er den vi allerede bruker på nettsiden, så vi gjenbruker noe ferdig i stedet for å betale for nytt. Datoene er våre faktiske.</span></span></h2>
@@ -384,14 +377,14 @@
     </div>
   </section>
 
-  <!-- 5 · KAMPSAKER (egen fyldig seksjon per kampsak, speiler FIVHs temaside-komponent) -->
+  <!-- 4 · KAMPSAKER (egen fyldig seksjon per kampsak, speiler FIVHs temaside-komponent) -->
   <section id="kampsaker" style="padding:0;">
     <div class="container" style="padding-top:56px;padding-bottom:28px;">
       <h2 class="section-title">To kamper du bør kjenne<span class="anno-wrap"><button class="anno" type="button" aria-expanded="false" aria-label="Vis kommentar"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-5 4V6a2 2 0 0 1 2-2z"/></svg></button><span class="anno-pop" role="note"><strong>Sakene vi jobber med</strong><br><br><strong>Hva dette er:</strong> Hver kampsak får sin egen seksjon som forklarer saken ferdig på siden.<br><br><strong>Hvorfor det er bygd slik:</strong> Jeg vil ikke sende folk videre til mange andre sider, for da mister vi noen underveis. Derfor oppsummerer vi saken her. Vi bruker en ferdig oppstilling vi allerede har, så vi slipper å betale for ny utvikling. Rekkefølgen følger vervesamtalen: først problemet, så at systemet er årsaken, så hva vi krever.</span></span></h2>
       <p class="section-subtitle">Dette er kampsakene vi fokuserer på i år. Vi oppsummerer dem her, så du slipper å lete.</p>
     </div>
 
-    <!-- 5a · Bærekraftig mat (grønn, som temasiden) -->
+    <!-- 4a · Bærekraftig mat (grønn, som temasiden) -->
     <div class="kampsak kampsak--gronn">
       <div class="container">
         <div class="kampsak__topp">
@@ -430,7 +423,7 @@
       </div>
     </div>
 
-    <!-- 5b · Nok overforbruk: stopp Temu -->
+    <!-- 4b · Nok overforbruk: stopp Temu -->
     <div class="kampsak">
       <div class="container">
         <div class="kampsak__topp">
@@ -470,7 +463,7 @@
     </div>
   </section>
 
-  <!-- 6 · BLI MEDLEM (modulær: Variant A + B) -->
+  <!-- 5 · BLI MEDLEM (modulær: Variant A + B) -->
   <section id="medlem" class="medlem">
     <div class="container medlem__inner">
       <h2 class="section-title" style="margin-bottom:10px;">Bli medlem, gi kampen tyngde<span class="anno-wrap"><button class="anno" type="button" aria-expanded="false" aria-label="Vis kommentar"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-5 4V6a2 2 0 0 1 2-2z"/></svg></button><span class="anno-pop" role="note"><strong>Bli medlem (kampanjens hovedmål)</strong><br><br><strong>Hva dette er:</strong> Inviterer folk til å bli medlem. Dette er det viktigste målet for kampanjen.<br><br><strong>Hvorfor det er bygd slik:</strong> Jeg har bygd den som den tydelige varianten: en kort begrunnelse pluss tre punkter på hva medlemskapet ditt faktisk gjør. Selve innmeldingen skjer på vår egen medlemsside.<br><br><strong>Må godkjennes:</strong> Linn (prosjektleder) bør bekrefte at vi går for denne tydelige vinklingen.</span></span></h2>
@@ -484,7 +477,7 @@
     </div>
   </section>
 
-  <!-- 7 · FOOTER (speiler FIVHs eksisterende footer) -->
+  <!-- 6 · FOOTER (speiler FIVHs eksisterende footer) -->
   <footer class="footer">
     <div class="container footer__topp">
       <div class="footer__merke">
