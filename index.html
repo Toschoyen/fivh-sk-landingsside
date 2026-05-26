@@ -16,7 +16,6 @@
    - Kampsaker redusert 6 → 2 (Temu + grønn matomstilling), Tobias' føring.
    - Medlemsseksjon MODULÆR: Variant A (subtil) + Variant B (primær) vises
      side om side; klienten velger i gjennomgangen.
-   - Nyhetsbrev beholdt, men flagget for FIVH-bekreftelse.
    - Strategi-bobler (oransje prikker): mine begrunnelser. Global vis/skjul.
    - Plattform = Craft CMS (Twig), ikke Divi 5.
 
@@ -179,30 +178,6 @@
     .medlem { background: var(--blaa-tint); }
     .medlem__inner { max-width: 680px; }
 
-    /* === NYHETSBREV (speiler FIVHs eksisterende komponent) === */
-    .nyhetsbrev { background: #fff; }
-    .nyhetsbrev__inner { max-width: 680px; }
-    .nyhetsbrev__tittel { font-size: 1.9rem; font-weight: 700; margin-bottom: 14px; }
-    .nyhetsbrev__tittel .sol { color: #15110d; margin-right: 12px; }
-    .nyhetsbrev__sub { font-size: 1rem; color: var(--tekst); margin-bottom: 24px; }
-    .nyhetsbrev__skjema { max-width: 620px; }
-    .nyhetsbrev__label { display: block; font-size: 0.82rem; font-weight: 700; margin-bottom: 7px; }
-    .paakrevd { color: #d6342c; }
-    .nyhetsbrev__skjema input[type="email"] {
-      width: 100%; padding: 15px 14px; font-size: 1rem; font-family: inherit;
-      border: 1px solid #c7ccd1; border-radius: 4px; margin-bottom: 16px;
-    }
-    .nyhetsbrev__skjema input[type="email"]:focus { outline: none; border-color: var(--blaa); }
-    .nyhetsbrev__samtykke { display: flex; gap: 9px; align-items: flex-start; font-size: 0.88rem; color: var(--tekst); margin-bottom: 20px; }
-    .nyhetsbrev__samtykke a { text-decoration: underline; }
-    .nyhetsbrev__send {
-      background: var(--oransje); color: #1f2429; border: none; cursor: pointer;
-      border-radius: 999px; padding: 13px 32px; font-size: 0.98rem; font-weight: 700;
-      font-family: inherit; transition: opacity 0.2s ease;
-    }
-    @media (prefers-reduced-motion: reduce) { .nyhetsbrev__send { transition: none; } }
-    .nyhetsbrev__send:hover { opacity: 0.88; }
-
     /* === FOOTER (speiler FIVHs eksisterende footer) === */
     .footer { background: var(--blaa-mork); color: #fff; padding: 56px 0 36px; }
     .footer__topp { display: flex; flex-direction: column; gap: 40px; }
@@ -275,23 +250,8 @@
       }
     }
 
-    /* === SKRIV UNDER (speiler FIVHs EKSISTERENDE underskrift-komponent) === */
+    /* === FELLES UTILITY === */
     .serif { font-family: Georgia, 'Times New Roman', serif; }
-    .skriv-under__tittel { text-align: center; font-size: 1.9rem; font-weight: 700; margin-bottom: 34px; }
-    .kampanje-rad { display: flex; flex-direction: column; gap: 18px; margin-bottom: 40px; }
-    .kampanje-rad:last-child { margin-bottom: 0; }
-    .kampanje-tittel { font-size: 1.35rem; font-weight: 700; line-height: 1.25; margin-bottom: 16px; }
-    .kampanje-tittel .stjerne { color: var(--oransje); margin-right: 8px; }
-    .progress {
-      position: relative; background: #e4e6e8; border-radius: 999px;
-      height: 38px; overflow: hidden; margin-bottom: 16px; max-width: 560px;
-    }
-    .progress__fill { position: absolute; top: 0; bottom: 0; left: 0; background: #d3e84f; border-radius: 999px; }
-    .progress__label {
-      position: relative; display: flex; align-items: center; gap: 8px;
-      height: 100%; padding: 0 18px; font-size: 0.84rem; font-weight: 700; color: #1f2429;
-    }
-    .kampanje-tekst p { font-size: 0.95rem; color: var(--tekst); margin-bottom: 12px; max-width: 560px; }
     .btn--pill {
       display: inline-flex; align-items: center; gap: 8px;
       border: 1.5px solid var(--tekst); color: var(--tekst); background: transparent;
@@ -300,11 +260,6 @@
     }
     @media (prefers-reduced-motion: reduce) { .btn--pill { transition: none; } }
     .btn--pill:hover { background: var(--tekst); color: #fff; }
-    .kampanje-bilde .image-placeholder { min-height: 230px; border-radius: 10px; }
-    @media (min-width: 900px) {
-      .skriv-under__tittel { font-size: 2.2rem; }
-      .kampanje-rad { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: center; margin-bottom: 56px; }
-    }
 
     /* === KAMPSAK-SEKSJON (speiler FIVHs eksisterende temaside-komponent) === */
     /* fargehint provisorisk, fra FIVHs temasider, ikke endelig merkevareplattform */
@@ -332,6 +287,7 @@
     .stat { border-top: 1px solid var(--k-strek); padding-top: 12px; }
     .stat__tall { font-size: 2.4rem; font-weight: 700; line-height: 1; }
     .stat__tekst { font-size: 0.85rem; color: var(--k-tekst); margin-top: 6px; }
+    .kampsak__cta { margin-top: 10px; }
     @media (min-width: 900px) {
       .kampsak { padding: 60px 0; }
       .kampsak__topp { flex-direction: row; align-items: center; gap: 40px; }
@@ -468,6 +424,7 @@
             <div class="stat"><div class="stat__tall serif">90 %</div><div class="stat__tekst">av klimagassutslippene fra norsk matproduksjon kommer fra kjøttproduksjon.</div></div>
             <div class="stat"><div class="stat__tall serif">40 %</div><div class="stat__tekst">oppgir at de ønsker å spise mindre kjøtt.</div></div>
             <div class="stat"><div class="stat__tall serif">450 000</div><div class="stat__tekst">tonn spiselig mat blir kastet i Norge hvert år.</div></div>
+            <div class="kampsak__cta"><a href="#kampanje-mat-TBD" class="btn--pill">Skriv under: Gjør det lett å spise sunt! →</a> <span class="tbd">kampanje-URL · FIVH</span></div>
           </div>
         </div>
       </div>
@@ -506,54 +463,14 @@
             <div class="stat"><div class="stat__tall serif">37 000</div><div class="stat__tekst">Temu-pakker lander i Norge hver eneste dag.</div></div>
             <div class="stat"><div class="stat__tall serif">Over 50 %</div><div class="stat__tekst">av testede Temu-produkter inneholdt helse- eller miljøfarlige stoffer (Miljødirektoratet).</div></div>
             <div class="stat"><div class="stat__tall serif">7 mill.</div><div class="stat__tekst">potensielt farlige pakker i året med dagens utvikling.</div></div>
+            <div class="kampsak__cta"><a href="#kampanje-temu-TBD" class="btn--pill">Skriv under: Nok overforbruk, stopp Temu →</a> <span class="tbd">kampanje-URL · FIVH</span></div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 6 · AKTIVE UNDERSKRIFTSKAMPANJER (2 kort, ruter ut) -->
-  <section id="kampanjer" style="background:var(--graa-bg);">
-    <div class="container">
-      <h2 class="skriv-under__tittel serif">Skriv under!<span class="anno-wrap"><button class="anno" type="button" aria-expanded="false" aria-label="Vis kommentar"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-5 4V6a2 2 0 0 1 2-2z"/></svg></button><span class="anno-pop" role="note"><strong>Der folk skriver under</strong><br><br><strong>Hva dette er:</strong> Viser de aktive underskriftskampanjene, med en knapp videre til selve underskriftssiden.<br><br><strong>Hvorfor det er bygd slik:</strong> Selve underskriften skjer på sidene vi allerede har, der rundt 50 til 70 prosent av de som er innom faktisk skriver under. Vi gjenbruker den ferdige oppstillingen, så vi slipper ny utvikling. Antall underskrifter oppdateres automatisk fra vårt eget system.</span></span></h2>
-
-      <div class="kampanje-rad">
-        <div class="kampanje-tekst">
-          <h3 class="kampanje-tittel serif"><span class="stjerne" aria-hidden="true">✱</span>Gjør det lett å spise sunt!</h3>
-          <div class="progress" role="img" aria-label="3 608 av 5 000 underskrifter (eksempel, live-tall fra FIVH)">
-            <div class="progress__fill" style="width:72%;"></div>
-            <div class="progress__label">3 608 av 5 000 underskrifter <span class="tbd">live-tall · FIVH</span></div>
-          </div>
-          <p>Sunn mat blir stadig dyrere, og prisene øker mer enn på usunn mat. Det gjør det vanskeligere for mange å velge de gode alternativene.</p>
-          <p>Nå må politikerne gjøre det enklere å velge sunn og bærekraftig mat!</p>
-          <a href="#kampanje-mat-TBD" class="btn--pill">Les mer og skriv under →</a> <span class="tbd">kampanje-URL · FIVH</span>
-        </div>
-        <div class="kampanje-bilde">
-          <div class="image-placeholder">BILDE: kampanje grønn mat (eksisterende)</div>
-        </div>
-      </div>
-
-      <div class="kampanje-rad">
-        <div class="kampanje-tekst">
-          <h3 class="kampanje-tittel serif"><span class="stjerne" aria-hidden="true">✱</span>Nok overforbruk – stopp Temu!</h3>
-          <div class="progress" role="img" aria-label="48 129 av 50 000 underskrifter (eksempel, live-tall fra FIVH)">
-            <div class="progress__fill" style="width:96%;"></div>
-            <div class="progress__label">48 129 av 50 000 underskrifter <span class="tbd">live-tall · FIVH</span></div>
-          </div>
-          <p>Temu skaper overforbruk og er en krise for planeten.</p>
-          <p>Med sine helse- og miljøskadelige produkter, flyfrakt, hemmelighold om arbeidsforhold og aggressiv markedsføring er Temu dårlig nytt.</p>
-          <p>Likevel kan de operere helt fritt. I dag har de tollfritak, og i praksis straffefritak for produktene med ulovlige verdier av miljøgifter og kreftfremkallende stoffer.</p>
-          <p>Nå er det på tide med politisk handling!</p>
-          <a href="#kampanje-temu-TBD" class="btn--pill">Les mer og skriv under →</a> <span class="tbd">kampanje-URL · FIVH</span>
-        </div>
-        <div class="kampanje-bilde">
-          <div class="image-placeholder">BILDE: kampanje Temu (eksisterende)</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 7 · BLI MEDLEM (modulær: Variant A + B) -->
+  <!-- 6 · BLI MEDLEM (modulær: Variant A + B) -->
   <section id="medlem" class="medlem">
     <div class="container medlem__inner">
       <h2 class="section-title" style="margin-bottom:10px;">Bli medlem, gi kampen tyngde<span class="anno-wrap"><button class="anno" type="button" aria-expanded="false" aria-label="Vis kommentar"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-5 4V6a2 2 0 0 1 2-2z"/></svg></button><span class="anno-pop" role="note"><strong>Bli medlem (kampanjens hovedmål)</strong><br><br><strong>Hva dette er:</strong> Inviterer folk til å bli medlem. Dette er det viktigste målet for kampanjen.<br><br><strong>Hvorfor det er bygd slik:</strong> Jeg har bygd den som den tydelige varianten: en kort begrunnelse pluss tre punkter på hva medlemskapet ditt faktisk gjør. Selve innmeldingen skjer på vår egen medlemsside.<br><br><strong>Må godkjennes:</strong> Linn (prosjektleder) bør bekrefte at vi går for denne tydelige vinklingen.</span></span></h2>
@@ -567,30 +484,13 @@
     </div>
   </section>
 
-  <!-- 8 · NYHETSBREV (speiler FIVHs eksisterende nyhetsbrev-komponent) -->
-  <section id="nyhetsbrev" class="nyhetsbrev">
-    <div class="container nyhetsbrev__inner">
-      <h2 class="nyhetsbrev__tittel serif"><span class="sol" aria-hidden="true">✻</span>Nyhetsbrev<span class="anno-wrap"><button class="anno" type="button" aria-expanded="false" aria-label="Vis kommentar"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-5 4V6a2 2 0 0 1 2-2z"/></svg></button><span class="anno-pop" role="note"><strong>Nyhetsbrev</strong><br><br><strong>Hva dette er:</strong> Lar folk som ikke er klare til å skrive under eller bli medlem få nyheter på e-post.<br><br><strong>Hvorfor det er bygd slik:</strong> Et alternativ med lav terskel, så vi ikke mister dem som er interessert, men ikke klare ennå. Jeg har lagt den inn som et forslag.<br><br><strong>Må godkjennes:</strong> Linn (prosjektleder) må bestemme om seksjonen skal være med, og hvilket e-postsystem vi bruker.</span></span></h2>
-      <p class="nyhetsbrev__sub">Vil du holdes oppdatert? Få vårt nyhetsbrev hver 14. dag.</p>
-      <form class="nyhetsbrev__skjema" onsubmit="event.preventDefault(); this.querySelector('button').innerText='Sendt ✓';">
-        <label class="nyhetsbrev__label" for="nb-epost">E-postadresse <span class="paakrevd" aria-hidden="true">*</span></label>
-        <input id="nb-epost" type="email" name="epost" aria-label="E-postadresse" required>
-        <label class="nyhetsbrev__samtykke">
-          <input type="checkbox" required>
-          <span>Jeg godtar at dere bruker informasjonen jeg sender inn i tråd med <a href="#personvern-TBD">personvernerklæringen</a> <span class="tbd">URL · FIVH</span></span>
-        </label>
-        <button type="submit" class="nyhetsbrev__send">Send</button>
-      </form>
-    </div>
-  </section>
-
-  <!-- 9 · FOOTER (speiler FIVHs eksisterende footer) -->
+  <!-- 7 · FOOTER (speiler FIVHs eksisterende footer) -->
   <footer class="footer">
     <div class="container footer__topp">
       <div class="footer__merke">
         <nav class="footer__hovedlenker" aria-label="Snarveier">
           <a href="#medlem" class="serif">Bli medlem</a>
-          <a href="#kampanjer" class="serif">Kampanjer</a>
+          <a href="#kampsaker" class="serif">Kampanjer</a>
           <a href="#">Om oss</a>
         </nav>
         <div class="footer__badge" role="img" aria-label="Bli medlem-merke (grafikk fra FIVH)"></div>
@@ -610,9 +510,9 @@
           </div>
           <div class="footer__kol">
             <h4>Skriv under</h4>
-            <a href="#kampanjer">Nok overforbruk – Stopp Temu!</a>
-            <a href="#kampanjer">Gjør det lett å spise sunt!</a>
-            <a href="#kampanjer">Spis grønnere – ta 5 av 7-utfordringen!</a>
+            <a href="#kampanje-temu-TBD">Nok overforbruk – Stopp Temu!</a>
+            <a href="#kampanje-mat-TBD">Gjør det lett å spise sunt!</a>
+            <a href="#">Spis grønnere – ta 5 av 7-utfordringen!</a>
           </div>
           <div class="footer__kol">
             <h4>Ressurser</h4>
@@ -639,7 +539,6 @@
           </div>
           <div class="footer__kol">
             <h4>Følg oss</h4>
-            <a href="#nyhetsbrev">Nyhetsbrev</a>
             <a href="#">Instagram</a>
             <a href="#">LinkedIn</a>
             <a href="#">Facebook</a>
