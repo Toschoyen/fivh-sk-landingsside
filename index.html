@@ -297,19 +297,19 @@
       .stat__tall { font-size: 3rem; }
     }
 
+    /* === HERO-BANNER (heldekkende bilde over hero, etter prosjektgruppe-tilbakemelding 2026-05-26) === */
+    .hero-banner .image-placeholder { min-height: 320px; border-radius: 0; }
+    @media (min-width: 900px) {
+      .hero-banner .image-placeholder { min-height: 480px; }
+    }
+
     /* === DET ER OSS DU MØTER (tillitskaping, etter prosjektgruppe-tilbakemelding 2026-05-26) === */
     .verver { background: #fff; }
-    .verver__grid { display: flex; flex-direction: column; gap: 28px; }
-    .verver__copy h2 { font-size: 1.8rem; font-weight: 800; line-height: 1.18; margin-bottom: 14px; }
-    .verver__copy p { font-size: 1rem; color: var(--tekst); margin-bottom: 14px; max-width: 540px; }
-    .verver__media { display: flex; }
-    .verver__media .image-placeholder { width: 100%; min-height: 280px; height: 100%; }
+    .verver__inner { max-width: 720px; }
+    .verver h2 { font-size: 1.8rem; font-weight: 800; line-height: 1.18; margin-bottom: 14px; }
+    .verver p { font-size: 1rem; color: var(--tekst); margin-bottom: 14px; }
     @media (min-width: 900px) {
-      .verver__grid { flex-direction: row; align-items: stretch; gap: 48px; }
-      .verver__copy { flex: 1 1 50%; }
-      .verver__media { flex: 1 1 50%; }
-      .verver__copy h2 { font-size: 2.4rem; }
-      .verver__media .image-placeholder { min-height: 0; }
+      .verver h2 { font-size: 2.4rem; }
     }
 
   </style>
@@ -334,6 +334,11 @@
       <a href="#topp">Sommerkampanjen</a>
     </div>
   </nav>
+
+  <!-- HERO-BANNER (heldekkende bilde, ny etter prosjektgruppe-tilbakemelding 2026-05-26) -->
+  <div class="hero-banner" aria-hidden="false">
+    <div class="image-placeholder">BILDE: heldekkende heltbilde (velges i fase 03)</div>
+  </div>
 
   <!-- 2 · HERO (slått sammen: «Hvem er FIVH» + «Bli medlem»-budskap, per prosjektgruppe-tilbakemelding) -->
   <section id="topp" class="hero">
@@ -364,15 +369,10 @@
 
   <!-- 3 · DET ER OSS DU MØTER (tillitskaping, ny etter prosjektgruppe-tilbakemelding 2026-05-26) -->
   <section id="ververe" class="verver">
-    <div class="container verver__grid">
-      <div class="verver__copy">
-        <h2>Det er oss du møter på døra<span class="anno-wrap"><button class="anno" type="button" aria-expanded="false" aria-label="Vis kommentar"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-5 4V6a2 2 0 0 1 2-2z"/></svg></button><span class="anno-pop" role="note"><strong>Tillitskaping: Det er oss du møter</strong><br><br><strong>Hva dette er:</strong> Ny seksjon etter prosjektgruppe-tilbakemelding 2026-05-26. Viser hvem ververne er, slik at folk kjenner oss igjen og stoler på at det ikke er en svindel.<br><br><strong>Hvorfor det er bygd slik:</strong> Inspirert av Røde Kors og Norsk Luftambulanse, som åpent forklarer hvem ververne deres er. Reduserer terskelen for å snakke med oss når vi banker på. Plassert rett etter hero så tillitsbyggingen kommer før informasjons- og handlingsdelene.<br><br><strong>Må godkjennes:</strong> Linn bør bekrefte tekst om vest, ID-kort og verver-rollen.</span></span></h2>
-        <p>I sommer er vi ute hos folk i hele landet, fra dør til dør og på gaten. Vi forteller om kampene vi kjemper, og inviterer deg som vil støtte arbeidet til å bli medlem.</p>
-        <p>Du kjenner oss igjen på vesten og ID-kortet med Framtiden i våre hender-logoen. Ververne våre er lært opp til å fortelle om kampsakene våre, ikke pushe medlemskap på sparket.</p>
-      </div>
-      <div class="verver__media">
-        <div class="image-placeholder">BILDE: FIVH-verver med vest og ID-kort (velges i fase 03)</div>
-      </div>
+    <div class="container verver__inner">
+      <h2>Det er oss du møter på døra<span class="anno-wrap"><button class="anno" type="button" aria-expanded="false" aria-label="Vis kommentar"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-5 4V6a2 2 0 0 1 2-2z"/></svg></button><span class="anno-pop" role="note"><strong>Tillitskaping: Det er oss du møter</strong><br><br><strong>Hva dette er:</strong> Ny seksjon etter prosjektgruppe-tilbakemelding 2026-05-26. Viser hvem ververne er, slik at folk kjenner oss igjen og stoler på at det ikke er en svindel.<br><br><strong>Hvorfor det er bygd slik:</strong> Inspirert av Røde Kors og Norsk Luftambulanse, som åpent forklarer hvem ververne deres er. Reduserer terskelen for å snakke med oss når vi banker på. Plassert rett etter hero så tillitsbyggingen kommer før informasjons- og handlingsdelene.<br><br><strong>Må godkjennes:</strong> Linn bør bekrefte tekst om vest, ID-kort og verver-rollen.</span></span></h2>
+      <p>I sommer er vi ute hos folk i hele landet, fra dør til dør og på gaten. Vi forteller om kampene vi kjemper, og inviterer deg som vil støtte arbeidet til å bli medlem.</p>
+      <p>Du kjenner oss igjen på vesten og ID-kortet med Framtiden i våre hender-logoen. Ververne våre er lært opp til å fortelle om kampsakene våre, ikke pushe medlemskap på sparket.</p>
     </div>
   </section>
 
