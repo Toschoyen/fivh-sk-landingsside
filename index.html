@@ -311,14 +311,6 @@
       .verver__media .image-placeholder { min-height: 0; }
     }
 
-    /* === VI ER I NÆRHETEN AV DEG === */
-    .naerhet { background: var(--graa-bg); }
-    .naerhet__inner { max-width: 720px; }
-    .naerhet h2 { font-size: 1.8rem; font-weight: 800; margin-bottom: 12px; }
-    .naerhet__intro { font-size: 1rem; color: var(--tekst); margin-bottom: 18px; }
-    @media (min-width: 900px) {
-      .naerhet h2 { font-size: 2.2rem; }
-    }
   </style>
 </head>
 <body>
@@ -368,7 +360,21 @@
     </div>
   </section>
 
-  <!-- 3 · DETTE HAR VI OPPNÅDD (speiler FIVHs eksisterende gjennomslag-komponent) -->
+  <!-- 3 · DET ER OSS DU MØTER (tillitskaping, ny etter prosjektgruppe-tilbakemelding 2026-05-26) -->
+  <section id="ververe" class="verver">
+    <div class="container verver__grid">
+      <div class="verver__copy">
+        <h2>Det er oss du møter på døra<span class="anno-wrap"><button class="anno" type="button" aria-expanded="false" aria-label="Vis kommentar"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-5 4V6a2 2 0 0 1 2-2z"/></svg></button><span class="anno-pop" role="note"><strong>Tillitskaping: Det er oss du møter</strong><br><br><strong>Hva dette er:</strong> Ny seksjon etter prosjektgruppe-tilbakemelding 2026-05-26. Viser hvem ververne er, slik at folk kjenner oss igjen og stoler på at det ikke er en svindel.<br><br><strong>Hvorfor det er bygd slik:</strong> Inspirert av Røde Kors og Norsk Luftambulanse, som åpent forklarer hvem ververne deres er. Reduserer terskelen for å snakke med oss når vi banker på. Plassert rett etter hero så tillitsbyggingen kommer før informasjons- og handlingsdelene.<br><br><strong>Må godkjennes:</strong> Linn bør bekrefte tekst om vest, ID-kort og verver-rollen.</span></span></h2>
+        <p>I sommer er FIVH-ververe ute hos folk i hele landet, fra dør til dør og på gaten. Vi forteller hva vi jobber med, og inviterer dem som vil støtte arbeidet til å bli medlem.</p>
+        <p>Du kjenner oss igjen på vesten og ID-kortet med Framtiden i våre hender-logoen. Ververne våre er trent til å fortelle om kampsakene, ikke selge deg noe på sparket.</p>
+      </div>
+      <div class="verver__media">
+        <div class="image-placeholder">BILDE: FIVH-verver med vest og ID-kort (velges i fase 03)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 · DETTE HAR VI OPPNÅDD (speiler FIVHs eksisterende gjennomslag-komponent) -->
   <section id="resultater">
     <div class="container">
       <h2 class="seire__tittel-seksjon serif">Dette har vi oppnådd sammen<span class="anno-wrap"><button class="anno" type="button" aria-expanded="false" aria-label="Vis kommentar"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-5 4V6a2 2 0 0 1 2-2z"/></svg></button><span class="anno-pop" role="note"><strong>Det vi har fått til</strong><br><br><strong>Hva dette er:</strong> Viser konkrete seire med dato, som matsvinnloven og brukthandelloven.<br><br><strong>Hvorfor det er bygd slik:</strong> Folk som ikke kjenner oss må se at vi faktisk får resultater før de stoler på oss og vil bidra. Oppstillingen er den vi allerede bruker på nettsiden, så vi gjenbruker noe ferdig i stedet for å betale for nytt. Datoene er våre faktiske.</span></span></h2>
@@ -396,14 +402,14 @@
     </div>
   </section>
 
-  <!-- 4 · KAMPSAKER (egen fyldig seksjon per kampsak, speiler FIVHs temaside-komponent) -->
+  <!-- 5 · KAMPSAKER (egen fyldig seksjon per kampsak, speiler FIVHs temaside-komponent) -->
   <section id="kampsaker" style="padding:0;">
     <div class="container" style="padding-top:56px;padding-bottom:28px;">
       <h2 class="section-title">To kamper du bør kjenne<span class="anno-wrap"><button class="anno" type="button" aria-expanded="false" aria-label="Vis kommentar"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-5 4V6a2 2 0 0 1 2-2z"/></svg></button><span class="anno-pop" role="note"><strong>Sakene vi jobber med</strong><br><br><strong>Hva dette er:</strong> Hver kampsak får sin egen seksjon som forklarer saken ferdig på siden.<br><br><strong>Hvorfor det er bygd slik:</strong> Jeg vil ikke sende folk videre til mange andre sider, for da mister vi noen underveis. Derfor oppsummerer vi saken her. Vi bruker en ferdig oppstilling vi allerede har, så vi slipper å betale for ny utvikling. Rekkefølgen følger vervesamtalen: først problemet, så at systemet er årsaken, så hva vi krever.</span></span></h2>
       <p class="section-subtitle">Dette er kampsakene vi fokuserer på i år. Vi oppsummerer dem her, så du slipper å lete.</p>
     </div>
 
-    <!-- 4a · Bærekraftig mat (grønn, som temasiden) -->
+    <!-- 5a · Bærekraftig mat (grønn, som temasiden) -->
     <div class="kampsak kampsak--gronn">
       <div class="container">
         <div class="kampsak__topp">
@@ -441,7 +447,7 @@
       </div>
     </div>
 
-    <!-- 4b · Nok overforbruk: stopp Temu -->
+    <!-- 5b · Nok overforbruk: stopp Temu -->
     <div class="kampsak">
       <div class="container">
         <div class="kampsak__topp">
@@ -480,35 +486,7 @@
     </div>
   </section>
 
-  <!-- 5 · DET ER OSS DU MØTER (tillitskaping, ny etter prosjektgruppe-tilbakemelding 2026-05-26) -->
-  <section id="ververe" class="verver">
-    <div class="container verver__grid">
-      <div class="verver__copy">
-        <h2>Det er oss du møter på døra<span class="anno-wrap"><button class="anno" type="button" aria-expanded="false" aria-label="Vis kommentar"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-5 4V6a2 2 0 0 1 2-2z"/></svg></button><span class="anno-pop" role="note"><strong>Tillitskaping: Det er oss du møter</strong><br><br><strong>Hva dette er:</strong> Ny seksjon etter prosjektgruppe-tilbakemelding 2026-05-26. Viser hvem ververne er, slik at folk kjenner oss igjen og stoler på at det ikke er en svindel.<br><br><strong>Hvorfor det er bygd slik:</strong> Inspirert av Røde Kors og Norsk Luftambulanse, som åpent forklarer hvem ververne deres er. Reduserer terskelen for å snakke med oss når vi banker på.<br><br><strong>Må godkjennes:</strong> Linn bør bekrefte tekst om vest, ID-kort og verver-rollen.</span></span></h2>
-        <p>I sommer er FIVH-ververe ute hos folk i hele landet, fra dør til dør og på gaten. Vi forteller hva vi jobber med, og inviterer dem som vil støtte arbeidet til å bli medlem.</p>
-        <p>Du kjenner oss igjen på vesten og ID-kortet med Framtiden i våre hender-logoen. Ververne våre er trent til å fortelle om kampsakene, ikke selge deg noe på sparket.</p>
-      </div>
-      <div class="verver__media">
-        <div class="image-placeholder">BILDE: FIVH-verver med vest og ID-kort (velges i fase 03)</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 6 · VI ER I NÆRHETEN AV DEG (geografisk dekning, ny etter prosjektgruppe-tilbakemelding 2026-05-26) -->
-  <section id="naerhet" class="naerhet">
-    <div class="container naerhet__inner">
-      <h2>Vi er i nærheten av deg<span class="anno-wrap"><button class="anno" type="button" aria-expanded="false" aria-label="Vis kommentar"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-5 4V6a2 2 0 0 1 2-2z"/></svg></button><span class="anno-pop" role="note"><strong>Om oss: Vi er i nærheten av deg</strong><br><br><strong>Hva dette er:</strong> Ny seksjon etter prosjektgruppe-tilbakemelding 2026-05-26. Forteller hvor i landet vi er aktive i sommerkampanjen, så folk forstår at det kan være oss som banker på i deres område.<br><br><strong>Hvorfor det er bygd slik:</strong> Inspirert av Kirkens Nødhjelps «Hvor finner du oss»-blokk. Geografisk nærhet bygger tillit og forventning.<br><br><strong>Må godkjennes:</strong> Linn må fylle inn faktisk liste over byer og regioner ververne dekker 8. juni til 7. august.</span></span></h2>
-      <p class="naerhet__intro">Sommerkampanjen 2026 går fra 8. juni til 7. august. I løpet av perioden møter du oss i flere byer og regioner over hele landet.</p>
-      <div class="callout">
-        <span class="callout__tag">Her møter du oss i sommer</span>
-        <ul>
-          <li>[Liste over byer og regioner fylles inn av FIVH]</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- 7 · BLI MEDLEM (modulær: Variant A + B) -->
+  <!-- 6 · BLI MEDLEM (modulær: Variant A + B) -->
   <section id="medlem" class="medlem">
     <div class="container medlem__inner">
       <h2 class="section-title" style="margin-bottom:10px;">Bli medlem, gi kampen tyngde<span class="anno-wrap"><button class="anno" type="button" aria-expanded="false" aria-label="Vis kommentar"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-5 4V6a2 2 0 0 1 2-2z"/></svg></button><span class="anno-pop" role="note"><strong>Bli medlem (kampanjens hovedmål)</strong><br><br><strong>Hva dette er:</strong> Inviterer folk til å bli medlem. Dette er det viktigste målet for kampanjen.<br><br><strong>Hvorfor det er bygd slik:</strong> Jeg har bygd den som den tydelige varianten: en kort begrunnelse pluss tre punkter på hva medlemskapet ditt faktisk gjør. Selve innmeldingen skjer på vår egen medlemsside.<br><br><strong>Må godkjennes:</strong> Linn (prosjektleder) bør bekrefte at vi går for denne tydelige vinklingen.</span></span></h2>
@@ -522,7 +500,7 @@
     </div>
   </section>
 
-  <!-- 8 · FOOTER (speiler FIVHs eksisterende footer) -->
+  <!-- 7 · FOOTER (speiler FIVHs eksisterende footer) -->
   <footer class="footer">
     <div class="container footer__topp">
       <div class="footer__merke">
